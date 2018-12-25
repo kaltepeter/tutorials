@@ -1,0 +1,3 @@
+[submodule "pluralsight-docker-deep-dive/psweb"]
+	path = pluralsight-docker-deep-dive/psweb
+	url = https://github.com/nigelpoulton/psweb.git
