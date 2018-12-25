@@ -16,7 +16,7 @@ class StoreLocator extends Component {
     }
 
     async componentDidMount() {
-        let response = await axios.get('https://localhost:3000/data/shops.json');
+        let response = await axios.get('http://localhost:3000/data/shops.json');
         this.setState({ shops: response.data.shops });
     }
 
@@ -32,7 +32,9 @@ class StoreLocator extends Component {
         return (
             <div>
                 <Header />
-                {storeButtons}
+                <div className="buttons">
+                    {storeButtons}
+                </div>
                 <Map imagename={this.state.currentMap} location={this.props.location} />
             </div>
         );

@@ -2,6 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import StoreLocator from '../StoreLocator';
 import axios from 'axios';
+import renderer from 'react-test-renderer';
 
 describe('StoreLocator', () => {
   let mountedStoreLocator;
@@ -10,13 +11,18 @@ describe('StoreLocator', () => {
     mountedStoreLocator = shallow(<StoreLocator />);
   });
 
+  it('renders correctly', () => {
+    const tree = renderer.create(<StoreLocator />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders without crashing', () => {
     let mountedStoreLocator = shallow(<StoreLocator />);
   });
 
   it('calls axios.get in #componentDidMount', () => {
     return mountedStoreLocator.instance().componentDidMount().then(() =>{
-      expect(axios.get).toHaveBeenCalledWith('https://localhost:3000/data/shops.json');
+      expect(axios.get).toHaveBeenCalledWith('http://localhost:3000/data/shops.json');
     });
   });
 
