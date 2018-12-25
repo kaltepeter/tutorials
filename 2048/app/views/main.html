@@ -1,0 +1,11 @@
+<!-- app/views/main.html -->
+<div id="content" ng-controller='GameController as ctrl'>
+  <!-- Now the variable: ctrl refers to the GameController -->
+  <div id="heading" class="row">
+    <h1 class="title">ng-2048</h1>
+    <div class="scores-container">
+      <div class="score-container">{{ ctrl.game.currentScore }}</div>
+      <div class="best-container">{{ ctrl.game.highScore }}</div>
+    </div>
+  </div>
+</div>
