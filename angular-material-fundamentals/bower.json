@@ -1,0 +1,22 @@
+{
+  "name": "angular-material-install",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Kayla Altepeter"
+  ],
+  "license": "MIT",
+  "homepage": "/app",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "^1.0.8",
+    "angular-material-icons": "^0.7.0"
+  }
+}
