@@ -29,3 +29,12 @@ describe('StoreLocator', () => {
   });
   
 });
+
+describe('ChooseMap', () => {
+  it('updates this.state.currentMap when the location is passed to it', () => {
+    const mountedStoreLocator = shallow(<StoreLocator />);
+    const mockEvent = {target: {value: 'testland'}};
+    mountedStoreLocator.instance().chooseMap(mockEvent);
+    expect(mountedStoreLocator.instance().state.currentMap).toBe('testland.png');
+  });
+});

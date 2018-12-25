@@ -1,8 +1,8 @@
 const mapChooser = (locationName) => {
     if (!locationName) {
-        locationName = 'default';
+        locationName = 'none';
     }
-    return `${locationName}.jpg`;
+    return `${locationName}.png`;
 };
 
 export default mapChooser;
