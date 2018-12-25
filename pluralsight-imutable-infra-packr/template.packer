@@ -1,0 +1,132 @@
+{
+  "variables": {
+    "ami_id": "ami-9abea4fb",
+    "supervisor_version": "3.0b2-1",
+    "auth_header": "{{env `AUTH_HEADER`}}"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "us-west-2",
+      "source_ami": "{{user `ami_id`}}",
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "MiddleTier-{{isotime | clean_ami_name}}",
+      "ami_description": "Amazing AMI Designed by Fanstastic Architect",
+      "tags": {
+        "role": "MiddleTier"
+      },
+      "run_tags": {
+        "role": "buildSystem"
+      }
+    },
+    {
+      "type": "virtualbox-iso",
+      "boot_command": [
+        "<esc><wait>",
+        "<esc><wait>",
+        "<enter><wait>",
+        "/install/vmlinuz<wait>",
+        " auto<wait>",
+        " console-setup/ask_detect=false<wait>",
+        " console-setup/layoutcode=us<wait>",
+        " console-setup/modelcode=pc105<wait>",
+        " debian-installer=en_US<wait>",
+        " fb=false<wait>",
+        " initrd=/install/initrd.gz<wait>",
+        " kbd-chooser/method=us<wait>",
+        " keyboard-configuration/layout=USA<wait>",
+        " keyboard-configuration/variant=USA<wait>",
+        " locale=en_US<wait>",
+        " netcfg/get_hostname=vm<wait>",
+        " netcfg/get_domain=globomantics.com<wait>",
+        " noapic<wait>",
+        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg<wait>",
+        " -- <wait>",
+        "<enter><wait>"
+      ],
+      "boot_wait": "10s",
+      "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04.5-server-amd64.iso",
+      "iso_checksum_type": "md5",
+      "iso_checksum": "dd54dc8cfc2a655053d19813c2f9aa9f",
+      "guest_os_type": "Ubuntu_64",
+      "http_directory": "http",
+      "ssh_username": "packer",
+      "ssh_password": "packer",
+      "ssh_wait_timeout": "10000s",
+      "shutdown_command": "sudo -S shutdown -P now",
+      "vm_name": "MiddleTier",
+      "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "512"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--cpus",
+          "2"
+        ]
+      ],
+      "headless": "false"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "scripts": [
+        "Scripts/virtualbox.sh",
+        "Scripts/vagrant.sh"
+      ],
+      "execute_command": "{{.Vars}} sudo -S -E bash '{{.Path}}'",
+      "only": [
+        "virtualbox-iso"
+      ]
+    },
+    {
+      "type": "shell",
+      "script": "ansible.sh"
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "./playbook.yml"
+    },
+    {
+      "type": "file",
+      "source": "ToUpload/",
+      "destination": "/tmp"
+    },
+    {
+      "type": "shell",
+      "script": "Scripts/nginx.sh",
+      "environment_vars": [
+        "AUTH_HEADER={{user `auth_header`}}"
+      ]
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "echo '**** Configuring application'",
+        "sudo apt-get install -y supervisor={{user `supervisor_version`}}",
+        "sudo cp /tmp/app-supervisor.conf /etc/supervisor/conf.d",
+        "sudo cp /tmp/app /usr/local/bin/app",
+        "sudo supervisorctl reread",
+        "sudo supervisorctl update"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "compress",
+      "output": "MiddleTier.tar.gz",
+      "only": ["virtualbox-iso"]
+    },
+    {
+      "type": "vagrant",
+      "output": "{{.Provider}}-MiddleTier.box",
+      "only": ["virtualbox-iso"]
+    }
+  ]
+}

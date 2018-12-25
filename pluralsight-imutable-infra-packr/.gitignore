@@ -1,0 +1,12 @@
+# Vagrant stuff
+acceptance_config.yml
+boxes/*
+.vagrant
+
+# Cache objects
+packer_cache/
+
+# For built boxes
+*.box
+
+*.pem
