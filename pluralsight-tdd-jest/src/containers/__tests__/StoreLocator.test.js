@@ -1,6 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import StoreLocator from '../StoreLocator';
+import axios from 'axios';
 
 describe('StoreLocator', () => {
   let mountedStoreLocator;
@@ -13,14 +14,33 @@ describe('StoreLocator', () => {
     let mountedStoreLocator = shallow(<StoreLocator />);
   });
 
+  it('calls axios.get in #componentDidMount', () => {
+    return mountedStoreLocator.instance().componentDidMount().then(() =>{
+      expect(axios.get).toHaveBeenCalledWith('https://localhost:3000/data/shops.json');
+    });
+  });
+
+  it('updates with api data', () => {
+    return mountedStoreLocator.instance().componentDidMount().then(() =>{
+      expect(mountedStoreLocator.state()).toHaveProperty('shops', 
+        [{
+          "location": 'test location', 
+          "address": 'test address'
+        }]
+      );
+    });
+  });
+
   it('renders the header', () => {
     const header = mountedStoreLocator.find('Header');
     expect(header.length).toBe(1);
   });
 
   it('renders two buttons', () => {
-    const buttons = mountedStoreLocator.find('Button');
-    expect(buttons.length).toBe(3);
+    return mountedStoreLocator.instance().componentDidMount().then(() =>{
+      const buttons = mountedStoreLocator.find('Button');
+      expect(buttons.length).toBe(1);
+    });
   });
 
   it('renders the map', () => {
