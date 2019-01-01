@@ -1,0 +1,14 @@
+{
+  "name": "pluralsight-typescript-in-depth",
+  "version": "1.0.0",
+  "description": "code from https://app.pluralsight.com/player?course=typescript-in-depth&author=brice-wilson&name=typescript-in-depth-m7&clip=4&mode=live",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.2.2"
+  }
+}
