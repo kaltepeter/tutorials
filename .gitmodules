@@ -1,3 +1,6 @@
 [submodule "pluralsight-docker-deep-dive/psweb"]
 	path = pluralsight-docker-deep-dive/psweb
 	url = https://github.com/nigelpoulton/psweb.git
+[submodule "TopCoders-angular2-testing"]
+	path = TopCoders-angular2-testing
+	url = git@github.com:kaltepeter/TopCoders-angular2-testing.git
