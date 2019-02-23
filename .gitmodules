@@ -4,3 +4,6 @@
 [submodule "TopCoders-angular2-testing"]
 	path = TopCoders-angular2-testing
 	url = git@github.com:kaltepeter/TopCoders-angular2-testing.git
+[submodule "WatchUsBuild-SimpleNodeAppWithDocker"]
+	path = WatchUsBuild-SimpleNodeAppWithDocker
+	url = git@github.com:kaltepeter/WatchUsBuild-SimpleNodeAppWithDocker.git
