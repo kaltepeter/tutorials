@@ -10,3 +10,6 @@
 [submodule "docker-for-java/docker-java-sample"]
 	path = docker-for-java/docker-java-sample
 	url = https://github.com/arun-gupta/docker-java-sample.git
+[submodule "kayla-cb-ws/custom-marker-pipelines"]
+	path = kayla-cb-ws/custom-marker-pipelines
+	url = https://github.com/cloudbees-core-cd-workshop/custom-marker-pipelines.git
