@@ -1,0 +1,13 @@
+# Files for Unit 2
+
+Please either clone this repository and navigate to the `wordplay` directory, or
+download these files individually to a `wordplay` directory. We'll use them
+throughout Unit 2.
+
+* [scrabble.py](./wordplay/scrabble.py)
+* [sowpods.txt](./wordplay/sowpods.txt)
+
+---
+
+Questions? Please don't hesitate to reach out to the author (me, Jessica!) at:
+<code>jesstess@mit.edu</code>.

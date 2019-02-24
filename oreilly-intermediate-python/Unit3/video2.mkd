@@ -1,0 +1,16 @@
+# Files for Unit 2
+
+Please either clone this repository and navigate to the `sonnets` directory, or
+download these files individually to a `sonnets` directory. We'll use them
+throughout Unit 2.
+
+* [sonnets.txt](./sonnets/sonnets.txt)
+* [sonnet_words.txt](./sonnets/sonnet_words.txt)
+* [sowpods.txt](./sonnets/sowpods.txt)
+* [sonnets.py](./sonnets/sonnets.py)
+* [extract_sonnet_words.py](./sonnets/extract_sonnet_words.py)
+
+---
+
+Questions? Please don't hesitate to reach out to the author (me, Jessica!) at:
+<code>jesstess@mit.edu</code>.

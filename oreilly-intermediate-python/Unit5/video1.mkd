@@ -1,0 +1,40 @@
+# Files for Unit 5
+
+Please complete the following steps to set up some projects dependencies for this Unit.
+
+## 1. Install matplotlib
+
+Follow the instructions for your platform at http://matplotlib.org/users/installing.html.
+
+The exact steps will depend on your environment setup, but a common case is:
+
+* Windows: run <code>pip3 install matplotlib</code> at a terminal prompt
+* OSX: run <code>pip3 install matplotlib</code> at a terminal prompt
+* Linux: install <code>python-matplotlib</code> through your package manager
+
+## 2. Test your matplotlib installation
+
+At a Python prompt, execute:
+
+<pre>from matplotlib import pyplot</pre>
+
+If that runs without error, you have installed <code>matplotlib</code>!
+
+## 3. Download the source material and Python scripts
+
+Please either clone this repository and navigate to the `plotting` directory, or
+download these files individually to a `plotting` directory. We'll use them
+throughout Unit 5.
+
+* [basic_plot.py](./plotting/basic_plot.py)
+* [world_population.txt](./plotting/world_population.txt)
+* [world_population.py](./plotting/world_population.py)
+* [life_expectancies_usa.txt](./plotting/life_expectancies_usa.txt)
+* [constitution.txt](./plotting/constitution.txt)
+* [constitution.py](./plotting/constitution.py)
+* [mystery.txt](./plotting/mystery.txt)
+
+---
+
+Questions? Please don't hesitate to reach out to the author (me, Jessica!) at:
+<code>jesstess@mit.edu</code>.
