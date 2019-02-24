@@ -13,3 +13,6 @@
 [submodule "kayla-cb-ws/custom-marker-pipelines"]
 	path = kayla-cb-ws/custom-marker-pipelines
 	url = https://github.com/cloudbees-core-cd-workshop/custom-marker-pipelines.git
+[submodule "kayla-cb-ws/helloworld-nodejs"]
+	path = kayla-cb-ws/helloworld-nodejs
+	url = git@github.com:kaltepeter/helloworld-nodejs.git
