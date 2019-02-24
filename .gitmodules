@@ -22,3 +22,6 @@
 [submodule "nrwl/workshop-nx-starter"]
 	path = nrwl/workshop-nx-starter
 	url = git@github.com:kaltepeter/workshop-nx-starter.git
+[submodule "pivotal/PivotalCloudCache-Workshop"]
+	path = pivotal/PivotalCloudCache-Workshop
+	url = git@github.com:kaltepeter/PivotalCloudCache-Workshop.git
