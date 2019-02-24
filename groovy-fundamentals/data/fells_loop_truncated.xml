@@ -1,0 +1,186 @@
+<route><!--Middlesex Fells Bike Loop-->
+    <routepoint timestamp='2001-06-02T00:18:15Z'>
+        <latitude>42.430950</latitude>
+        <longitude>-71.107628</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-07T23:55:13Z'>
+        <latitude>42.431240</latitude>
+        <longitude>-71.109236</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-07T23:55:13Z'>
+        <latitude>42.434980</latitude>
+        <longitude>-71.109942</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-28T21:06:52Z'>
+        <latitude>42.436757</latitude>
+        <longitude>-71.113223</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:07Z'>
+        <latitude>42.439018</latitude>
+        <longitude>-71.114456</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-28T21:06:52Z'>
+        <latitude>42.438594</latitude>
+        <longitude>-71.114803</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-16T23:05:10Z'>
+        <latitude>42.438917</latitude>
+        <longitude>-71.116146</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-28T21:06:52Z'>
+        <latitude>42.438878</latitude>
+        <longitude>-71.119277</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:07Z'>
+        <latitude>42.439227</latitude>
+        <longitude>-71.119689</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T00:18:14Z'>
+        <latitude>42.439993</latitude>
+        <longitude>-71.120925</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T00:18:16Z'>
+        <latitude>42.441727</latitude>
+        <longitude>-71.121676</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-28T21:06:52Z'>
+        <latitude>42.443904</latitude>
+        <longitude>-71.122044</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-28T21:06:52Z'>
+        <latitude>42.445359</latitude>
+        <longitude>-71.122845</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:10Z'>
+        <latitude>42.447298</latitude>
+        <longitude>-71.121447</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-07T23:55:13Z'>
+        <latitude>42.449765</latitude>
+        <longitude>-71.122320</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-07T23:55:13Z'>
+        <latitude>42.451442</latitude>
+        <longitude>-71.121746</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-07T23:55:13Z'>
+        <latitude>42.453256</latitude>
+        <longitude>-71.121211</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-07T23:55:13Z'>
+        <latitude>42.456252</latitude>
+        <longitude>-71.119356</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-07T23:55:13Z'>
+        <latitude>42.456592</latitude>
+        <longitude>-71.119676</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:12Z'>
+        <latitude>42.457388</latitude>
+        <longitude>-71.119845</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:12Z'>
+        <latitude>42.458148</latitude>
+        <longitude>-71.119135</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:13Z'>
+        <latitude>42.459377</latitude>
+        <longitude>-71.117693</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-28T21:06:52Z'>
+        <latitude>42.464183</latitude>
+        <longitude>-71.119828</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:14Z'>
+        <latitude>42.465650</latitude>
+        <longitude>-71.119399</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-07T23:55:13Z'>
+        <latitude>42.465913</latitude>
+        <longitude>-71.119328</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:14Z'>
+        <latitude>42.467110</latitude>
+        <longitude>-71.113574</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:14Z'>
+        <latitude>42.466459</latitude>
+        <longitude>-71.110067</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:14Z'>
+        <latitude>42.466557</latitude>
+        <longitude>-71.109410</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:15Z'>
+        <latitude>42.463495</latitude>
+        <longitude>-71.107117</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:15Z'>
+        <latitude>42.465687</latitude>
+        <longitude>-71.107360</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-16T23:05:10Z'>
+        <latitude>42.459986</latitude>
+        <longitude>-71.106170</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:16Z'>
+        <latitude>42.457616</latitude>
+        <longitude>-71.105116</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-16T23:05:10Z'>
+        <latitude>42.453845</latitude>
+        <longitude>-71.105206</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-16T23:05:10Z'>
+        <latitude>42.451430</latitude>
+        <longitude>-71.105413</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:16Z'>
+        <latitude>42.448448</latitude>
+        <longitude>-71.106158</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:16Z'>
+        <latitude>42.447804</latitude>
+        <longitude>-71.106624</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:17Z'>
+        <latitude>42.444773</latitude>
+        <longitude>-71.108882</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:17Z'>
+        <latitude>42.443592</latitude>
+        <longitude>-71.106301</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:10Z'>
+        <latitude>42.442981</latitude>
+        <longitude>-71.111441</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:07Z'>
+        <latitude>42.442196</latitude>
+        <longitude>-71.110975</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:07Z'>
+        <latitude>42.441754</latitude>
+        <longitude>-71.113220</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T03:27:07Z'>
+        <latitude>42.439018</latitude>
+        <longitude>-71.114456</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-28T21:06:52Z'>
+        <latitude>42.436757</latitude>
+        <longitude>-71.113223</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-07T23:55:13Z'>
+        <latitude>42.434980</latitude>
+        <longitude>-71.109942</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-11-07T23:55:13Z'>
+        <latitude>42.431240</latitude>
+        <longitude>-71.109236</longitude>
+    </routepoint>
+    <routepoint timestamp='2001-06-02T00:18:15Z'>
+        <latitude>42.430950</latitude>
+        <longitude>-71.107628</longitude>
+    </routepoint>
+</route>
