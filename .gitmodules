@@ -16,3 +16,6 @@
 [submodule "kayla-cb-ws/helloworld-nodejs"]
 	path = kayla-cb-ws/helloworld-nodejs
 	url = git@github.com:kaltepeter/helloworld-nodejs.git
+[submodule "kayla-cb-ws/pipeline-library"]
+	path = kayla-cb-ws/pipeline-library
+	url = git@github.com:kaltepeter/pipeline-library.git
