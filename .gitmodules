@@ -28,3 +28,6 @@
 [submodule "pluralsight/pluralsight-gulp"]
 	path = pluralsight/pluralsight-gulp
 	url = git@github.com:kaltepeter/pluralsight-gulp.git
+[submodule "frontendmasters/nodebots-workshop"]
+	path = frontendmasters/nodebots-workshop
+	url = git@github.com:kaltepeter/nodebots-workshop.git

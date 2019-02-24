@@ -1,0 +1,1 @@
+mongoimport -h ds149335.mlab.com:49335 -d user-authentication-api -c instructors -u myusername -p mypw --file ./instructors.json
