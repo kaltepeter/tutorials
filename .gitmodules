@@ -25,3 +25,6 @@
 [submodule "pivotal/PivotalCloudCache-Workshop"]
 	path = pivotal/PivotalCloudCache-Workshop
 	url = git@github.com:kaltepeter/PivotalCloudCache-Workshop.git
+[submodule "pluralsight/pluralsight-gulp"]
+	path = pluralsight/pluralsight-gulp
+	url = git@github.com:kaltepeter/pluralsight-gulp.git
