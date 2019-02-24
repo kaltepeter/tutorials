@@ -1,0 +1,6 @@
+{
+    "python.linting.pylintEnabled": false,
+    "files.associations": {
+        "stdio.h": "c"
+    }
+}
