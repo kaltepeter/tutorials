@@ -7,3 +7,6 @@
 [submodule "WatchUsBuild-SimpleNodeAppWithDocker"]
 	path = WatchUsBuild-SimpleNodeAppWithDocker
 	url = git@github.com:kaltepeter/WatchUsBuild-SimpleNodeAppWithDocker.git
+[submodule "docker-for-java/docker-java-sample"]
+	path = docker-for-java/docker-java-sample
+	url = https://github.com/arun-gupta/docker-java-sample.git
