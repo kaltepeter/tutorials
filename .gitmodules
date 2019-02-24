@@ -19,3 +19,6 @@
 [submodule "kayla-cb-ws/pipeline-library"]
 	path = kayla-cb-ws/pipeline-library
 	url = git@github.com:kaltepeter/pipeline-library.git
+[submodule "nrwl/workshop-nx-starter"]
+	path = nrwl/workshop-nx-starter
+	url = git@github.com:kaltepeter/workshop-nx-starter.git
