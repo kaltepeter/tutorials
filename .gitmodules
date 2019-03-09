@@ -34,3 +34,6 @@
 [submodule "frontendmasters/testing-workshop"]
 	path = frontendmasters/testing-workshop
 	url = git@github.com:kaltepeter/testing-workshop.git
+[submodule "frontendmasters/user-authentication-api"]
+	path = frontendmasters/user-authentication-api
+	url = git@github.com:kaltepeter/user-authentication-api.git
