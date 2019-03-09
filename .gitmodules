@@ -31,3 +31,6 @@
 [submodule "frontendmasters/nodebots-workshop"]
 	path = frontendmasters/nodebots-workshop
 	url = git@github.com:kaltepeter/nodebots-workshop.git
+[submodule "frontendmasters/testing-workshop"]
+	path = frontendmasters/testing-workshop
+	url = git@github.com:kaltepeter/testing-workshop.git
