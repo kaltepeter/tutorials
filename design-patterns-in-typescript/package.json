@@ -2,10 +2,16 @@
   "name": "design-patterns-in-typescript",
   "version": "1.0.0",
   "description": "tutorial code for https://learning.oreilly.com/videos/design-patterns-in/9781789347951",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "MIT"
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^11.13.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.4.2"
+  }
 }
