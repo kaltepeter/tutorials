@@ -1,4 +1,5 @@
 import { StatsTracker } from "./stats-tracker";
+import { test } from './test';
 
 let tracker = StatsTracker.instance;
 tracker.widgetViews = 90;
@@ -11,5 +12,7 @@ console.log("TCL: tracker.buttonClicks", tracker.buttonClicks);
 console.log("TCL: tracker.facebookShares", tracker.facebookShares);
 console.log("TCL: tracker.twitterShares", tracker.twitterShares);
 
+tracker.widgetViews++;
+tracker.twitterShares += 2;
 
-
+test();
