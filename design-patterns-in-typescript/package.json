@@ -4,7 +4,9 @@
   "description": "tutorial code for https://learning.oreilly.com/videos/design-patterns-in/9781789347951",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "singleton": "node creation/app"
   },
   "author": "",
   "license": "ISC",
