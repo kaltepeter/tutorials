@@ -1,0 +1,85 @@
+{
+	"folders": [
+		{
+			"path": "2048"
+		},
+		{
+			"path": "angular-material-fundamentals"
+		},
+		{
+			"path": "codeschool-express-tdd"
+		},
+		{
+			"path": "docker"
+		},
+		{
+			"path": "docker-for-java"
+		},
+		{
+			"path": "docker-gs"
+		},
+		{
+			"path": "frontendmasters"
+		},
+		{
+			"path": "git_tutorial"
+		},
+		{
+			"path": "groovy-for-dsl"
+		},
+		{
+			"path": "groovy-fundamentals"
+		},
+		{
+			"path": "hackernews-node"
+		},
+		{
+			"path": "heroku-node-js-getting-started"
+		},
+		{
+			"path": "hottowel"
+		},
+		{
+			"path": "kayla-cb-ws"
+		},
+		{
+			"path": "material-pluralsight"
+		},
+		{
+			"path": "nrwl"
+		},
+		{
+			"path": "nrwl/workshop-nx-starter"
+		},
+		{
+			"path": "oreilly-intermediate-python"
+		},
+		{
+			"path": "oreilly-path-groovy"
+		},
+		{
+			"path": "pivotal"
+		},
+		{
+			"path": "pluralsight"
+		},
+		{
+			"path": "react-game"
+		},
+		{
+			"path": "reactive-pluralsight"
+		},
+		{
+			"path": "scotch.io"
+		},
+		{
+			"path": "spring-boot-docker"
+		},
+		{
+			"path": "TopCoders-angular2-testing"
+		},
+		{
+			"path": "WatchUsBuild-SimpleNodeAppWithDocker"
+		}
+	]
+}
