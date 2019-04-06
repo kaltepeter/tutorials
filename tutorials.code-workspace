@@ -10,6 +10,9 @@
 			"path": "codeschool-express-tdd"
 		},
 		{
+			"path": "design-patterns-in-typescript"
+		},
+		{
 			"path": "docker"
 		},
 		{
@@ -49,9 +52,6 @@
 			"path": "nrwl"
 		},
 		{
-			"path": "nrwl/workshop-nx-starter"
-		},
-		{
 			"path": "oreilly-intermediate-python"
 		},
 		{
@@ -80,6 +80,9 @@
 		},
 		{
 			"path": "WatchUsBuild-SimpleNodeAppWithDocker"
+		},
+		{
+			"path": "nrwl/workshop-nx-starter"
 		}
 	]
 }
