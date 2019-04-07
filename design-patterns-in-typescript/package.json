@@ -15,9 +15,10 @@
     "intro-decorator": "ts-node intro-decorators/app",
     "inversify": "ts-node inversify/app",
     "ioc-decorators": "ts-node ioc-decorators/app",
+    "object-pool": "ts-node object-pool/app",
+    "observer": "ts-node observer/app",
     "strategy": "ts-node strategy/app",
-    "singleton": "ts-node singleton/app",
-    "object-pool": "ts-node object-pool/app"
+    "singleton": "ts-node singleton/app"
   },
   "author": "",
   "license": "ISC",
