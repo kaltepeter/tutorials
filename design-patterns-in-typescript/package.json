@@ -9,6 +9,7 @@
     "dep-injection": "ts-node dependency-injection/app",
     "factory": "ts-node factory/app",
     "intro-decorator": "ts-node intro-decorators/app",
+    "ioc-decorators": "ts-node ioc-decorators/app",
     "singleton": "ts-node singleton/app",
     "object-pool": "ts-node object-pool/app"
   },
