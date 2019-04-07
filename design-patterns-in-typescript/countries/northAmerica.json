@@ -1,0 +1,17 @@
+[
+    {
+        "name": "USA",
+        "capital": "Washington, D.C.",
+        "currency": "USD"
+    },
+    {
+        "name": "Canada",
+        "capital": "Ottawa",
+        "currency": "CAD"
+    },
+    {
+        "name": "Mexico",
+        "capital": "Mexico City",
+        "currency": "MXN"
+    }
+]

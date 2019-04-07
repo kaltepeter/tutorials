@@ -1,0 +1,17 @@
+[
+    {
+        "name": "India",
+        "capital": "New Delhi",
+        "currency": "INR"
+    },
+    {
+        "name": "Japan",
+        "capital": "Tokyo",
+        "currency": "JPY"
+    },
+    {
+        "name": "China",
+        "capital": "Beijing",
+        "currency": "CNY"
+    }
+]

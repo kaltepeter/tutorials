@@ -1,0 +1,27 @@
+[
+    {
+        "name": "South Africa",
+        "capital": "Cape Town",
+        "currency": "ZAR"
+    },
+    {
+        "name": "Nigeria",
+        "capital": "Abuja",
+        "currency": "NGN"
+    }, 
+    {
+        "name": "Morocco",
+        "capital": "Rabat",
+        "currency": "MAD"
+    },
+    {
+        "name": "Kenya",
+        "capital": "Nairobi",
+        "currency": "KES"
+    },
+    {
+        "name": "Senegal",
+        "capital": "Dakar",
+        "currency": "CFA"
+    }
+]

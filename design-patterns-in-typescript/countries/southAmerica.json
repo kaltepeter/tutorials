@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Argentina",
+        "capital": "Buenos Aires",
+        "currency": "ARS"
+    },
+    {
+        "name": "Brazil",
+        "capital": "Brasilia",
+        "currency": "BRL"
+    },
+    {
+        "name": "Colombia",
+        "capital": "Bogota",
+        "currency": "COP"
+    },
+    {
+        "name": "Uruguay",
+        "capital": "Montevideo",
+        "currency": "UYU"
+    }, 
+    {
+        "name": "Paraguay",
+        "capital": "Asunción",
+        "currency": "PYG"
+    }
+]
