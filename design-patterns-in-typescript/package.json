@@ -15,6 +15,7 @@
     "intro-decorator": "ts-node intro-decorators/app",
     "inversify": "ts-node inversify/app",
     "ioc-decorators": "ts-node ioc-decorators/app",
+    "strategy": "ts-node strategy/app",
     "singleton": "ts-node singleton/app",
     "object-pool": "ts-node object-pool/app"
   },
@@ -22,6 +23,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "chalk": "^2.4.2",
     "inversify": "^5.0.1"
   },
   "devDependencies": {
