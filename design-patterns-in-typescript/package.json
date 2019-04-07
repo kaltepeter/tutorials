@@ -19,6 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "inversify": "^5.0.1"
   },
   "devDependencies": {
