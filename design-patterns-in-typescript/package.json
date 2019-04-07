@@ -9,6 +9,7 @@
     "adapter": "ts-node adapter/app",
     "decorator": "ts-node decorator/app",
     "dep-injection": "ts-node dependency-injection/app",
+    "facade": "ts-node facade/app",
     "factory": "ts-node factory/app",
     "intro-decorator": "ts-node intro-decorators/app",
     "inversify": "ts-node inversify/app",
