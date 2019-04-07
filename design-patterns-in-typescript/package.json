@@ -9,6 +9,7 @@
     "dep-injection": "ts-node dependency-injection/app",
     "factory": "ts-node factory/app",
     "intro-decorator": "ts-node intro-decorators/app",
+    "inversify": "ts-node inversify/app",
     "ioc-decorators": "ts-node ioc-decorators/app",
     "singleton": "ts-node singleton/app",
     "object-pool": "ts-node object-pool/app"
@@ -16,9 +17,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^11.13.0"
+    "inversify": "^5.0.1"
   },
   "devDependencies": {
+    "@types/node": "^11.13.0",
+    "reflect-metadata": "^0.1.13",
     "ts-node": "^8.0.3",
     "typescript": "^3.4.2"
   }
