@@ -6,9 +6,10 @@
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "factory": "node factory/app",
-    "singleton": "node singleton/app",
-    "object-pool": "node object-pool/app"
+    "dep-injection": "ts-node dependency-injection/app",
+    "factory": "ts-node factory/app",
+    "singleton": "ts-node singleton/app",
+    "object-pool": "ts-node object-pool/app"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "@types/node": "^11.13.0"
   },
   "devDependencies": {
+    "ts-node": "^8.0.3",
     "typescript": "^3.4.2"
   }
 }
