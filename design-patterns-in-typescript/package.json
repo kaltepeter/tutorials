@@ -7,6 +7,7 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "adapter": "ts-node adapter/app",
+    "command": "ts-node command/app",
     "composite": "ts-node composite/app",
     "decorator": "ts-node decorator/app",
     "dep-injection": "ts-node dependency-injection/app",
