@@ -1,11 +1,10 @@
-console.log('starting');
+const request = require('request');
+const darkSkyApiKey = process.env.DARKSKY_API_KEY;
+const darkSkyLoc = process.env.DARKSKY_LOC;
 
-setTimeout(() => {
-    console.log('2 second timer');
-}, 2000);
+const url = `https://api.darksky.net/forecast/${darkSkyApiKey}/${darkSkyLoc}`;
 
-setTimeout(() => {
-    console.log('0 second timer');
-}, 0);
-
-console.log('stopping');
+request({url: url}, (error, response) => {
+    const data = JSON.parse(response.body);
+    console.log(data);
+});
