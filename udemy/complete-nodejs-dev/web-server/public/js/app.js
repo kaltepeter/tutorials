@@ -1,20 +1,8 @@
-console.log('Client side javascript file is loaded.');
 const weatherAPI = 'http://localhost:3000/weather';
 
-(async () => {
+const fetchWeather = async (address) => {
     try {
-        const response = await fetch('http://puzzle.mead.io/puzzle');
-        // console.log(response);
-        const data = await response.json();
-        console.log(data);
-    } catch(e) {
-        console.error(e);
-    }
-})();
-
-(async () => {
-    try {
-        const response = await fetch(`${weatherAPI}?address=boston`);
+        const response = await fetch(`${weatherAPI}?address=${address}`);
         const data = await response.json();
         if (data.error) {
             console.error(data.error);
@@ -25,4 +13,14 @@ const weatherAPI = 'http://localhost:3000/weather';
     } catch(e) {
         console.error(e);
     }
-})();
+};
+
+const weatherForm = document.querySelector('form');
+const searchElem = document.querySelector('input');
+
+weatherForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const location = searchElem.value;
+    fetchWeather(location);
+});
