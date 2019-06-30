@@ -1,14 +1,23 @@
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
-const darkSkyLoc = process.env.DARKSKY_LOC;
-const [lat, long] = darkSkyLoc;
+const address = process.argv[2];
+// const darkSkyLoc = process.env.DARKSKY_LOC;
+// const [lat, long] = darkSkyLoc;
 
-geocode('Boston', (error, data) => {
-    console.log(`Error: `, error);
-    console.log(`Data: `, data);
-});
+if (!address) {
+    console.error('Please provide an address.');
+} else {
+    geocode(address, (error, data) => {
+        if (error) {
+            return console.error(error);
+        }
+        forecast(data.latitude, data.longitude, (error, forecastData) => {
+            if (error) {
+                return console.error(error);
+            }
 
-forecast(lat, long, (error, data) => {
-    console.log('Error', error)
-    console.log('Data', data)
-});
+            console.log(data.location);
+            console.log(forecastData);
+        });
+    });
+}
