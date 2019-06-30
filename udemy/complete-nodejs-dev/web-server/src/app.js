@@ -50,13 +50,13 @@ app.get('/weather', (req, res) => {
         });
     }
 
-    geocode(address, (error, {latitude, longitude, location}) => {
+    geocode(address, (error, {latitude, longitude, location} = {}) => {
         if (error) {
-            return console.error(error);
+            return res.send(error);
         }
         forecast(latitude, longitude, (darkskyError, forecast) => {
             if (darkskyError) {
-                return console.error(darkskyError);
+                return res.send(darkskyError);
             }
 
             res.send({

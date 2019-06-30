@@ -3,7 +3,7 @@ const darkSkyApiKey = process.env.DARKSKY_API_KEY;
 
 const forecast = (latitude, longitude, callback) => {
     const url = `https://api.darksky.net/forecast/${darkSkyApiKey}/${latitude},${longitude}`;
-    request({url, json: true}, (error, { body: {error:apiError, daily, currently} }) => {
+    request({url, json: true}, (error, { body: {error:apiError, daily, currently} } = {}) => {
         if (error) {
             callback('Unable to connect to weather service!');
         } else if (apiError) {
