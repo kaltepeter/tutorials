@@ -1,0 +1,15 @@
+{
+  "name": "angularfirebase",
+  "version": "1.0.0",
+  "description": "https://angularfirebase.com/lessons/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "jest": "^24.8.0",
+    "rxjs": "^6.5.2"
+  }
+}
