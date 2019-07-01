@@ -11,7 +11,7 @@ const forecast = (latitude, longitude, callback) => {
         } else {
             const {temperature, precipProbability} = currently;
             const today = daily.data[0];
-            callback(undefined, `${today.summary} It is currently ${temperature} out. There is a ${Math.round(precipProbability * 100)}% chance of rain.`);
+            callback(undefined, `${today.summary} It is currently ${temperature} degrees out. The high today is ${today.temperatureHigh} with a low of ${today.temperatureLow}. There is a ${Math.round(precipProbability * 100)}% chance of rain.`);
         }
     });
 };
