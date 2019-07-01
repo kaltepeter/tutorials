@@ -1,4 +1,4 @@
-const weatherAPI = 'http://localhost:3000/weather';
+const weatherAPI = '/weather';
 
 const fetchWeather = async (address) => {
     const response = await fetch(`${weatherAPI}?address=${address}`);
