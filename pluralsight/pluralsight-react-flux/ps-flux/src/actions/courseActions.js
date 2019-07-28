@@ -22,4 +22,13 @@ const loadCourses = () => {
   });
 };
 
-export { saveCourse, loadCourses };
+const deleteCourse = id => {
+  return courseApi.deleteCourse(id).then(() => {
+    dispatcher.dispatch({
+      actionType: actionTypes.DELETE_COURSE,
+      id: id
+    });
+  });
+};
+
+export { saveCourse, loadCourses, deleteCourse };
