@@ -5,6 +5,7 @@ import CourseForm from "./CourseForm";
 import * as courseApi from "../api/courseApi";
 
 const ManageCoursePage = props => {
+  const [errors, setErrors] = useState({});
   const [course, setCourse] = useState({
     id: null,
     slug: "",
@@ -22,10 +23,21 @@ const ManageCoursePage = props => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    if (!formIsValid()) return;
     courseApi.saveCourse(course).then(() => {
       props.history.push("/courses");
       toast.success("Course saved.");
     });
+  };
+
+  const formIsValid = () => {
+    const _errors = {};
+    if (!course.title) _errors.title = "Title is required";
+    if (!course.authorId) _errors.authorId = "Author ID is required";
+    if (!course.category) _errors.category = "Category is required";
+
+    setErrors(_errors);
+    return Object.keys(_errors).length === 0;
   };
 
   return (
@@ -34,6 +46,7 @@ const ManageCoursePage = props => {
       {/* <Prompt when={true} message="Are you sure you want to leave?" /> */}
       {props.match.params.slug}
       <CourseForm
+        errors={errors}
         course={course}
         onChange={handleChange}
         onSubmit={handleSubmit}
