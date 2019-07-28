@@ -11,4 +11,13 @@ const saveCourse = course => {
   });
 };
 
-export { saveCourse };
+const loadCourses = () => {
+  return courseApi.getCourses().then(courses => {
+    dispatcher.dispatch({
+      actionType: actionTypes.LOAD_COURSES,
+      courses
+    });
+  });
+};
+
+export { saveCourse, loadCourses };
