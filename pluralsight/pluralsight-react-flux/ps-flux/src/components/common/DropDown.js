@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const TextInput = props => {
+const DropDown = props => {
   let wrapperClass = "form-group";
   if (props.error.length > 0) {
     wrapperClass += " has-error";
@@ -10,31 +10,40 @@ const TextInput = props => {
     <div className={wrapperClass}>
       <label htmlFor={props.id}>{props.label}</label>
       <div className="field">
-        <input
+        <select
           id={props.id}
-          type="text"
-          onChange={props.onChange}
           name={props.name}
+          onChange={props.onChange}
+          value={props.value.toString()}
           className="form-control"
-          value={props.value}
-        />
+        >
+          <option value="" />
+          {props.valueOptions.map(opt => {
+            return (
+              <option key={opt.id} value={opt.id}>
+                {opt.name}
+              </option>
+            );
+          })}
+        </select>
       </div>
       {props.error && <div className="alert alert-danger">{props.error}</div>}
     </div>
   );
 };
 
-TextInput.propTypes = {
+DropDown.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string,
-  error: PropTypes.string
+  error: PropTypes.string,
+  valueOptions: PropTypes.array.isRequired
 };
 
-TextInput.defaultProps = {
+DropDown.defaultProps = {
   error: ""
 };
 
-export default TextInput;
+export default DropDown;

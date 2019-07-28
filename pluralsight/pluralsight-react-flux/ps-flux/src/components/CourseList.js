@@ -15,6 +15,7 @@ const CourseList = props => {
       </thead>
       <tbody>
         {props.courses.map(course => {
+          const author = props.authorLookup(course.authorId);
           return (
             <tr key={course.id}>
               <td>
@@ -28,7 +29,7 @@ const CourseList = props => {
               <td>
                 <Link to={`/course/${course.slug}`}>{course.title}</Link>
               </td>
-              <td>{course.authorId}</td>
+              <td>{author.name}</td>
               <td>{course.category}</td>
             </tr>
           );
@@ -47,7 +48,8 @@ CourseList.propTypes = {
       authorId: PropTypes.number.isRequired,
       category: PropTypes.string.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  authorLookup: PropTypes.func.isRequired
 };
 
 // CourseList.defaultProps = {

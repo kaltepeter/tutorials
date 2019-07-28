@@ -3,10 +3,14 @@ import { toast } from "react-toastify";
 
 import CourseForm from "./CourseForm";
 import courseStore from "../stores/courseStore";
+import authorStore from "../stores/authorStore";
 import * as courseActions from "../actions/courseActions";
+import * as authorActions from "../actions/authorActions";
 
 const ManageCoursePage = props => {
   const [errors, setErrors] = useState({});
+  const [authors, setAuthors] = useState(authorStore.getAuthors());
+
   const [courses, setCourses] = useState(courseStore.getCourses());
   const [course, setCourse] = useState({
     id: null,
@@ -22,13 +26,26 @@ const ManageCoursePage = props => {
     if (courses.length === 0) {
       courseActions.loadCourses();
     } else if (slug) {
-      setCourse(courseStore.getCourseBySlug(slug));
+      const _course = courseStore.getCourseBySlug(slug);
+      setCourse(_course);
+      if (!_course) props.history.push("/notfound");
     }
+
     return () => courseStore.removeChangeListener(onChange);
-  }, [courses.length, props.match.params.slug]);
+  }, [courses.length, props.match.params.slug, props.history]);
+
+  useEffect(() => {
+    authorStore.addChangeListener(onAuthorsChange);
+    if (authors.length === 0) authorActions.loadAuthors();
+    return () => authorStore.removeChangeListener(onAuthorsChange);
+  }, [authors.length]);
 
   const onChange = () => {
     setCourses(courseStore.getCourses());
+  };
+
+  const onAuthorsChange = () => {
+    setAuthors(authorStore.getAuthors());
   };
 
   const handleChange = ({ target }) => {
@@ -62,10 +79,11 @@ const ManageCoursePage = props => {
     <>
       <h2>Manage Course</h2>
       {/* <Prompt when={true} message="Are you sure you want to leave?" /> */}
-      {props.match.params.slug}
+      <p>{props.match.params.slug}</p>
       <CourseForm
         errors={errors}
         course={course}
+        authors={authors}
         onChange={handleChange}
         onSubmit={handleSubmit}
       />
