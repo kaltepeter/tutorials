@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import * as courseActions from "../../redux/actions/courseActions";
+import { bindActionCreators } from "redux";
 
 class CoursesPage extends React.Component {
   state = {
@@ -17,7 +18,7 @@ class CoursesPage extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.createCourse(this.state.course);
+    this.props.actions.createCourse(this.state.course);
   };
 
   render() {
@@ -41,7 +42,7 @@ class CoursesPage extends React.Component {
 
 CoursesPage.propTypes = {
   courses: PropTypes.array.isRequired,
-  createCourse: PropTypes.func.isRequired
+  actions: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => {
@@ -52,7 +53,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createCourse: course => dispatch(courseActions.createCourse(course))
+    actions: bindActionCreators(courseActions, dispatch)
   };
 };
 
