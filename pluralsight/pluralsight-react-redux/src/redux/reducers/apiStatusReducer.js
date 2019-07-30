@@ -2,7 +2,7 @@ import * as types from "../actions/actionTypes";
 import initialState from "./initialState";
 
 const actionTypeEndsInSuccess = type => {
-  return type.substring(type.length - 8) === "SUCCESS";
+  return type.substring(type.length - 8) === "_SUCCESS";
 };
 
 const apiCallStatusReducer = (
