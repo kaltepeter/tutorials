@@ -14,6 +14,10 @@ const createCourseSuccess = course => {
   return { type: types.CREATE_COURSE_SUCCESS, course };
 };
 
+const deleteCourseOptimistic = course => {
+  return { type: types.DELETE_COURSE_OPTIMISTIC, course };
+};
+
 const loadCourses = () => {
   return dispatch => {
     dispatch(beginApiCall());
@@ -47,10 +51,19 @@ const saveCourse = course => {
   };
 };
 
+const deleteCourse = course => {
+  return dispatch => {
+    dispatch(deleteCourseOptimistic(course));
+    return courseApi.deleteCourse(course.id);
+  };
+};
+
 export {
   loadCourses,
   loadCourseSuccess,
   saveCourse,
   updateCourseSuccess,
-  createCourseSuccess
+  createCourseSuccess,
+  deleteCourse,
+  deleteCourseOptimistic
 };
