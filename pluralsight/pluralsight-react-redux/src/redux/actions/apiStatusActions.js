@@ -4,4 +4,8 @@ const beginApiCall = () => {
   return { type: types.BEGIN_API_CALL };
 };
 
-export { beginApiCall };
+const apiCallError = () => {
+  return { type: types.API_CALL_ERROR };
+};
+
+export { beginApiCall, apiCallError };
