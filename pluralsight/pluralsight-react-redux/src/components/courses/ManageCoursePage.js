@@ -119,6 +119,8 @@ const mapDispatchToProps = {
   loadAuthors
 };
 
+export { ManageCoursePage };
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
