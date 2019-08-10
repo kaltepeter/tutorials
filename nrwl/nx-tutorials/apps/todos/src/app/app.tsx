@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Todo } from '@nx-tutorials/data';
+import { Todos } from '@nx-tutorials/ui';
 
 import './app.css';
 
@@ -29,11 +30,7 @@ export const App = () => {
   return (
     <>
       <h1>Todos</h1>
-      <ul>
-        {todos.map(t => (
-          <li className={'todo'}>{t.title}</li>
-        ))}
-      </ul>
+      <Todos todos={todos} />
       <button id={'add-todo'} onClick={addTodo}>
         Add Todo
       </button>
