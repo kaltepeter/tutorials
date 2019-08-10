@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './app.css';
 
@@ -12,13 +12,21 @@ export const App = () => {
     { title: 'Todo 2' }
   ]);
 
+  useEffect(() => {
+    fetch('/api/todos')
+      .then(_ => _.json())
+      .then(setTodos);
+  }, []);
+
   const addTodo = () => {
-    setTodos([
-      ...todos,
-      {
-        title: `New todo ${Math.floor(Math.random() * 1000)}`
-      }
-    ]);
+    fetch('/api/addTodo', {
+      method: 'POST',
+      body: ''
+    })
+      .then(_ => _.json())
+      .then(newTodo => {
+        setTodos([...todos, newTodo]);
+      });
   };
 
   return (
