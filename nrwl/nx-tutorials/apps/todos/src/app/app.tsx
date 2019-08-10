@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Todo } from '@nx-tutorials/data';
 
 import './app.css';
-
-interface Todo {
-  title: string;
-}
 
 export const App = () => {
   const [todos, setTodos] = useState<Todo[]>([
