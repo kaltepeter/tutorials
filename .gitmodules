@@ -40,3 +40,6 @@
 [submodule "frontendmasters/webpack-workshop-2018"]
 	path = frontendmasters/webpack-workshop-2018
 	url = git@github.com:kaltepeter/webpack-workshop-2018.git
+[submodule "testing-workshop-cypress"]
+	path = testing-workshop-cypress
+	url = https://github.com/kaltepeter/testing-workshop-cypress.git
