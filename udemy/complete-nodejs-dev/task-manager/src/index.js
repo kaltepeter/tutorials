@@ -8,17 +8,13 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // maintenence message
-app.use((req, res, next) => {
-  res.status(503).send("Site is currently down. Check back soon!");
-});
+// app.use((req, res, next) => {
+//   res.status(503).send("Site is currently down. Check back soon!");
+// });
 
 app.use((req, res, next) => {
   console.log(`${req.method}:  ${req.path}`);
-  if (req.method === "GET") {
-    res.send("GET requrests are disabled");
-  } else {
-    next();
-  }
+  next();
 });
 
 app.use(express.json());
