@@ -8,12 +8,12 @@ const validator = require("validator");
 const userSchema = new mongoose.Schema(
   {
     name: {
-      type: "String",
+      type: String,
       required: true,
       trim: true
     },
     email: {
-      type: "String",
+      type: String,
       required: true,
       trim: true,
       lowercase: true,
@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema(
       }
     },
     age: {
-      type: "Number",
+      type: Number,
       default: 0,
       validate(value) {
         if (value < 0) {
@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema(
       }
     },
     password: {
-      type: "String",
+      type: String,
       required: true,
       trim: true,
       minlength: 7,
@@ -47,11 +47,14 @@ const userSchema = new mongoose.Schema(
     tokens: [
       {
         token: {
-          type: "String",
+          type: String,
           required: true
         }
       }
-    ]
+    ],
+    avatar: {
+      type: Buffer
+    }
   },
   {
     timestamps: true
