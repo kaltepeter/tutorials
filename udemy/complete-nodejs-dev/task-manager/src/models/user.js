@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const Task = require("./task");
 
 const validator = require("validator");
+const jwtSecret = process.env.JWT_SECRET;
 
 const userSchema = new mongoose.Schema(
   {
@@ -69,7 +70,7 @@ userSchema.virtual("tasks", {
 
 userSchema.methods.generateAuthToken = async function() {
   const user = this;
-  const token = jwt.sign({ _id: user.id.toString() }, "thisismynewcourse");
+  const token = jwt.sign({ _id: user.id.toString() }, jwtSecret);
   user.tokens = user.tokens.concat({ token });
   await user.save();
   return token;
