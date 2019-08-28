@@ -1,9 +1,13 @@
-test("Hello world!", () => {
-  // export
+const { calculateTip } = require("../src/math");
+
+test("should calculate total with tip", () => {
+  const total = calculateTip(10, 0.3);
+  expect(total).toBe(13);
 });
 
-test("This should fail", () => {
-  throw new Error("Failure");
+test("should calculate total with default tip", () => {
+  const total = calculateTip(10);
+  expect(total).toBe(12.5);
 });
 
 // Why test?
