@@ -1,11 +1,24 @@
 const socket = io();
 
-socket.on("countUpdated", count => {
-  console.log(`The count has been updated! ${count}`);
+socket.on("message", message => {
+  console.log(message);
 });
 
-const incrementButton = document.querySelector("#increment");
-incrementButton.addEventListener("click", () => {
-  console.log("clicked");
-  socket.emit("increment");
+const messageForm = document.querySelector("#messageForm");
+
+messageForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const message = formData.get("message");
+  socket.emit("sendMessage", message);
+});
+
+document.querySelector("#send-location").addEventListener("click", () => {
+  if (!navigator.geolocation) {
+    return alert("Geolocation is not supported by your browser");
+  }
+  navigator.geolocation.getCurrentPosition(position => {
+    const { latitude, longitude } = position.coords;
+    socket.emit("sendLocation", { latitude, longitude });
+  });
 });
