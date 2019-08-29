@@ -67,6 +67,11 @@ button {
   color: var(--p-text);
 }
 
+input:disabled,
+button:disabled {
+  opacity: 0.4;
+}
+
 .container {
   display: flex;
   flex-direction: column;
