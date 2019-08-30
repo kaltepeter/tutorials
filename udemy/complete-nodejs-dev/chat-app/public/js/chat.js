@@ -29,9 +29,10 @@ socket.on("message", message => {
   scrollLatest();
 });
 
-socket.on("locationMessage", url => {
+socket.on("locationMessage", message => {
   const html = Mustache.render(locMessageTemplate, {
-    url
+    message: message.text,
+    createdAt: moment(message.createdAt).format("h:mm A")
   });
   $messages.insertAdjacentHTML("beforeend", html);
 });
