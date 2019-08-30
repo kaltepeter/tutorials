@@ -36,10 +36,13 @@ io.on("connection", socket => {
 
     socket.join(user.room);
 
-    socket.emit("message", generateMessage("Welcome!"));
+    socket.emit("message", generateMessage("Admin", "Welcome!"));
     socket.broadcast
       .to(user.room)
-      .emit("message", generateMessage(`${user.username} has joined!`));
+      .emit(
+        "message",
+        generateMessage("Admin", `${user.username} has joined!`)
+      );
 
     cb();
 
@@ -49,16 +52,22 @@ io.on("connection", socket => {
 
   socket.on("sendMessage", (message, cb) => {
     const filter = new Filter();
+    const user = getUser(socket.id);
 
     if (filter.isProfane(message)) {
       return cb("Profanity is not allowed.");
     }
-    io.to("test").emit("message", generateMessage(message));
+    io.to(user.room).emit("message", generateMessage(user.username, message));
     cb();
   });
 
   socket.on("sendLocation", ({ latitude, longitude }, cb) => {
-    io.emit("locationMessage", generateLocationMessage(latitude, longitude));
+    const user = getUser(socket.id);
+
+    io.to(user.room).emit(
+      "locationMessage",
+      generateLocationMessage(user.username, latitude, longitude)
+    );
     cb();
   });
 
@@ -68,7 +77,7 @@ io.on("connection", socket => {
     if (user) {
       io.to(user.room).emit(
         "message",
-        generateMessage(`${user.username} has left`)
+        generateMessage("Admin", `${user.username} has left`)
       );
     }
   });

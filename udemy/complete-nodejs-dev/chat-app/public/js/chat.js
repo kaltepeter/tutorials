@@ -27,6 +27,7 @@ const scrollLatest = () => {
 
 socket.on("message", message => {
   const html = Mustache.render(messageTemplate, {
+    username: message.username,
     message: message.text,
     createdAt: moment(message.createdAt).format("h:mm A")
   });
@@ -36,7 +37,8 @@ socket.on("message", message => {
 
 socket.on("locationMessage", message => {
   const html = Mustache.render(locMessageTemplate, {
-    message: message.text,
+    username: message.username,
+    url: message.url,
     createdAt: moment(message.createdAt).format("h:mm A")
   });
   $messages.insertAdjacentHTML("beforeend", html);

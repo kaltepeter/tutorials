@@ -63,6 +63,7 @@
                     placeholder="Message"
                     aria-label="Message"
                     required
+                    autocomplete="off"
                     minlength="2"
                     maxlength="100"
                   />
@@ -113,7 +114,7 @@
             chat_bubble
           </i>
           <p>
-          <span class="message__name">Some user name</span>
+          <span class="message__name">{{username}}</span>
           <span class="message__meta">{{createdAt}}</span>
           </p>
           <p class="mdc-list-item__text">
@@ -129,7 +130,7 @@
         my_location
         </i>
         <p>
-            <span class="message__name">Some user name</span>
+            <span class="message__name">{{username}}</span>
             <span class="message__meta">{{createdAt}}</span>
         </p>
         <p>
