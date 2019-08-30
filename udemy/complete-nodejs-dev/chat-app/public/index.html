@@ -13,17 +13,8 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:300,400,500|Roboto+Mono|Roboto:900i|Material+Icons+Two+Tone"
     />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico"
-    />
-    <link
-      rel="mask-icon"
-      type=""
-      href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg"
-      color="#111"
-    />
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png" />
+    <link rel="icon" href="/img/favicon.png" />
     <title>Chat App</title>
 
     <link
@@ -32,104 +23,120 @@
     />
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 
-    <link rel="stylesheet" href="/css/app.css" />
-    <!-- <link rel="stylesheet" href="/css/color.css" />
-    <link rel="stylesheet" href="/css/mdc.css" />
-    <link rel="stylesheet" href="/css/index.css" /> -->
+    <!-- <link rel="stylesheet" href="/css/app.css" /> -->
+    <link rel="stylesheet" href="/css/styles.min.css" />
   </head>
   <body class="mdc-typography mdc-theme--background">
-    <section class="app-bar"></section>
-    <div class="page mdc-theme--secondary-bg">
-      <header
-        class="mdc-theme--primary-bg mdc-theme--on-primary mdc-typography--headline4"
-      >
-        <h1 class="mdc-typography--headline4">Chat App</h1>
-      </header>
-      <main
-        class="mdc-typography--body1 mdc-theme--surface mdc-theme--on-surface overflow-container"
-      >
-        <ul class="mdc-list mdc-list--non-interactive" id="messages"></ul>
-      </main>
-      <footer class="mdc-typography--body2 mdc-theme--on-primary">
-        <form name="message-form" id="message-form">
-          <fieldset class="message-input">
-            <div
-              class="mdc-text-field mdc-text-field--with-leading-icon mdc-text-field--no-label"
-            >
-              <i class="material-icons-two-tone mdc-text-field__icon"
-                >message</i
-              >
-              <input
-                class="mdc-text-field__input"
-                type="text"
-                id="text-field-message-input"
-                id="message"
-                name="message"
-                placeholder="Message"
-                aria-label="Message"
-                required
-                minlength="2"
-                maxlength="100"
-              />
-              <div class="mdc-line-ripple"></div>
-            </div>
-            <div class="mdc-text-field-helper-line">
-              <p
-                class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg mdc-text-field-character-counter"
-                id="text-field-fullwidth-helper-helper-text"
-              >
-                2 / 100
-              </p>
-            </div>
-          </fieldset>
-          <fieldset>
-            <div class="">
-              <button
-                type="submit"
-                class="mdc-button mdc-button--raised mdc-button__label mdc-theme--primary-bg mdc-typography--button"
-              >
-                <i
-                  class="material-icons-two-tone mdc-theme--text-icon-on-dark mdc-theme--on-primary"
+    <div class="chat">
+      <div class="chat__sidebar"></div>
+      <div class="chat__main">
+        <section class="app-bar"></section>
+        <div class="page mdc-theme--secondary-bg">
+          <header
+            class="mdc-theme--primary-bg mdc-theme--on-primary mdc-typography--headline4"
+          >
+            <h1 class="mdc-typography--headline4">Chat App</h1>
+          </header>
+          <main
+            class="mdc-typography--body1 mdc-theme--surface mdc-theme--on-surface overflow-container"
+          >
+            <ul
+              class="mdc-list mdc-list--non-interactive chat__messages"
+              id="messages"
+            ></ul>
+          </main>
+          <footer class="mdc-typography--body2 mdc-theme--on-primary compose">
+            <form name="message-form" id="message-form">
+              <fieldset class="message-input">
+                <div
+                  class="mdc-text-field mdc-text-field--with-leading-icon mdc-text-field--no-label"
                 >
-                  send
-                </i>
-              </button>
-            </div>
-          </fieldset>
-        </form>
-        <section class="spacer"></section>
-        <button
-          id="send-location"
-          type="button"
-          class="mdc-button mdc-button--raised mdc-button__label mdc-typography--button send-location"
-        >
-          Send location
-        </button>
-        <section class="spacer"></section>
-      </footer>
+                  <i class="material-icons-two-tone mdc-text-field__icon"
+                    >message</i
+                  >
+                  <input
+                    class="mdc-text-field__input"
+                    type="text"
+                    id="text-field-message-input"
+                    id="message"
+                    name="message"
+                    placeholder="Message"
+                    aria-label="Message"
+                    required
+                    minlength="2"
+                    maxlength="100"
+                  />
+                  <div class="mdc-line-ripple"></div>
+                </div>
+                <div class="mdc-text-field-helper-line">
+                  <p
+                    class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg mdc-text-field-character-counter"
+                    id="text-field-fullwidth-helper-helper-text"
+                  >
+                    2 / 100
+                  </p>
+                </div>
+              </fieldset>
+              <fieldset>
+                <div class="">
+                  <button
+                    type="submit"
+                    class="mdc-button mdc-button--raised mdc-button__label mdc-theme--primary-bg mdc-typography--button"
+                  >
+                    <i
+                      class="material-icons-two-tone mdc-theme--text-icon-on-dark mdc-theme--on-primary"
+                    >
+                      send
+                    </i>
+                  </button>
+                </div>
+              </fieldset>
+            </form>
+            <section class="spacer"></section>
+            <button
+              id="send-location"
+              type="button"
+              class="mdc-button mdc-button--raised mdc-button__label mdc-typography--button send-location"
+            >
+              Send location
+            </button>
+            <section class="spacer"></section>
+          </footer>
+        </div>
+      </div>
     </div>
     <script id="message-template" type="text/html">
-      <li class="mdc-list-item" tabindex="0">
+      <li class="mdc-list-item message" tabindex="0">
             <i
             class="material-icons-two-tone mdc-list-item__graphic"
           >
             chat_bubble
           </i>
-          <span class="mdc-list-item__text">
-              {{createdAt}} - {{message}}</span>
+          <p>
+          <span class="message__name">Some user name</span>
+          <span class="message__meta">{{createdAt}}</span>
+          </p>
+          <p class="mdc-list-item__text">
+              {{message}}</p>
       </li>
       <li role="separator" class="mdc-list-divider"></li>
     </script>
     <script id="loc-message-template" type="text/html">
-      <li class="mdc-list-item" tabindex="0">
+      <li class="mdc-list-item message" tabindex="0">
         <i
         class="material-icons-two-tone mdc-list-item__graphic"
         >
         my_location
         </i>
-        {{createdAt}} - <button class="mdc-button mdc-button--plain mdc-typography--button mdc-theme--primary" type="link">
+        <p>
+            <span class="message__name">Some user name</span>
+            <span class="message__meta">{{createdAt}}</span>
+        </p>
+        <p>
+        <button class="mdc-button mdc-button--plain mdc-typography--button mdc-theme--primary" type="link">
             <a class="mdc-list-item__text mdc-button__label" href="{{url}}" target="_blank">My current location</a>
         </button>
+        </p>
         </li>
         <li role="separator" class="mdc-list-divider"></li>
     </script>
