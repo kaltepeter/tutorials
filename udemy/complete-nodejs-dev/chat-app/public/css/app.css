@@ -95,3 +95,22 @@ footer form .mdc-button {
 .spacer {
   height: 8px;
 }
+
+.centered-form,
+.centered-form__box {
+  height: 100%;
+}
+
+.centered-form form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  align-content: center;
+  justify-content: space-evenly;
+  height: 100%;
+  min-height: 0;
+}
+
+.centered-form form .mdc-form-field {
+  width: 60%;
+}

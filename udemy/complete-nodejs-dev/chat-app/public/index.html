@@ -27,144 +27,62 @@
     <link rel="stylesheet" href="/css/styles.min.css" />
   </head>
   <body class="mdc-typography mdc-theme--background">
-    <div class="chat">
-      <div class="chat__sidebar"></div>
-      <div class="chat__main">
-        <section class="app-bar"></section>
-        <div class="page mdc-theme--secondary-bg">
-          <header
-            class="mdc-theme--primary-bg mdc-theme--on-primary mdc-typography--headline4"
-          >
-            <h1 class="mdc-typography--headline4">Chat App</h1>
-          </header>
-          <main
-            class="mdc-typography--body1 mdc-theme--surface mdc-theme--on-surface overflow-container"
-          >
-            <ul
-              class="mdc-list mdc-list--non-interactive chat__messages"
-              id="messages"
-            ></ul>
-          </main>
-          <footer class="mdc-typography--body2 mdc-theme--on-primary compose">
-            <form name="message-form" id="message-form">
-              <fieldset class="message-input">
-                <div
-                  class="mdc-text-field mdc-text-field--with-leading-icon mdc-text-field--no-label"
+    <section class="app-bar"></section>
+    <div class="page mdc-theme--secondary-bg">
+      <header
+        class="mdc-theme--primary-bg mdc-theme--on-primary mdc-typography--headline4"
+      >
+        <h1 class="mdc-typography--headline4">Join</h1>
+      </header>
+      <main
+        class="mdc-typography--body1 mdc-theme--surface mdc-theme--on-surface overflow-container"
+      >
+        <div class="centered-form">
+          <div class="centered-form__box">
+            <form action="/chat.html">
+              <div class="mdc-form-field mdc-text-field">
+                <input
+                  type="text"
+                  class="mdc-text-field__input"
+                  name="username"
+                  id="username"
+                  required
+                />
+                <label for="username" class="mdc-floating-label"
+                  >Display name</label
                 >
-                  <i class="material-icons-two-tone mdc-text-field__icon"
-                    >message</i
-                  >
-                  <input
-                    class="mdc-text-field__input"
-                    type="text"
-                    id="text-field-message-input"
-                    id="message"
-                    name="message"
-                    placeholder="Message"
-                    aria-label="Message"
-                    required
-                    minlength="2"
-                    maxlength="100"
-                  />
-                  <div class="mdc-line-ripple"></div>
-                </div>
-                <div class="mdc-text-field-helper-line">
-                  <p
-                    class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg mdc-text-field-character-counter"
-                    id="text-field-fullwidth-helper-helper-text"
-                  >
-                    2 / 100
-                  </p>
-                </div>
-              </fieldset>
-              <fieldset>
-                <div class="">
-                  <button
-                    type="submit"
-                    class="mdc-button mdc-button--raised mdc-button__label mdc-theme--primary-bg mdc-typography--button"
-                  >
-                    <i
-                      class="material-icons-two-tone mdc-theme--text-icon-on-dark mdc-theme--on-primary"
-                    >
-                      send
-                    </i>
-                  </button>
-                </div>
-              </fieldset>
+                <div class="mdc-line-ripple"></div>
+              </div>
+              <div class="mdc-form-field mdc-text-field">
+                <input
+                  type="text"
+                  class="mdc-text-field__input"
+                  name="room"
+                  id="room"
+                  required
+                />
+                <label for="room" class="mdc-floating-label">Room</label>
+                <div class="mdc-line-ripple"></div>
+              </div>
+              <button
+                type="submit"
+                class="mdc-button mdc-button--raised mdc-theme--primary-bg mdc-typography--button"
+              >
+                <i
+                  class="mdc-button__icon material-icons-two-tone mdc-theme--text-icon-on-dark mdc-theme--on-primary"
+                >
+                  chat
+                </i>
+                <span class="mdc-button__label">Join</span>
+              </button>
             </form>
-            <section class="spacer"></section>
-            <button
-              id="send-location"
-              type="button"
-              class="mdc-button mdc-button--raised mdc-button__label mdc-typography--button send-location"
-            >
-              Send location
-            </button>
-            <section class="spacer"></section>
-          </footer>
+          </div>
         </div>
-      </div>
+      </main>
+      <footer>
+        <section class="spacer"></section>
+      </footer>
     </div>
-    <script id="message-template" type="text/html">
-      <li class="mdc-list-item message" tabindex="0">
-            <i
-            class="material-icons-two-tone mdc-list-item__graphic"
-          >
-            chat_bubble
-          </i>
-          <p>
-          <span class="message__name">Some user name</span>
-          <span class="message__meta">{{createdAt}}</span>
-          </p>
-          <p class="mdc-list-item__text">
-              {{message}}</p>
-      </li>
-      <li role="separator" class="mdc-list-divider"></li>
-    </script>
-    <script id="loc-message-template" type="text/html">
-      <li class="mdc-list-item message" tabindex="0">
-        <i
-        class="material-icons-two-tone mdc-list-item__graphic"
-        >
-        my_location
-        </i>
-        <p>
-            <span class="message__name">Some user name</span>
-            <span class="message__meta">{{createdAt}}</span>
-        </p>
-        <p>
-        <button class="mdc-button mdc-button--plain mdc-typography--button mdc-theme--primary" type="link">
-            <a class="mdc-list-item__text mdc-button__label" href="{{url}}" target="_blank">My current location</a>
-        </button>
-        </p>
-        </li>
-        <li role="separator" class="mdc-list-divider"></li>
-    </script>
     <script src="/js/mdc.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/chat.js"></script>
   </body>
-  <div
-    id="screen-shader"
-    style="
-            transition: opacity 0.1s ease 0s; 
-            z-index: 2147483647;
-            margin: 0; 
-            border-radius: 0; 
-            padding: 0; 
-            background: #111111; 
-            pointer-events: none; 
-            position: fixed; 
-            top: -10%; 
-            right: -10%; 
-            width: 120%; 
-            height: 120%; 
-            opacity: 0.5840;
-            mix-blend-mode: multiply; 
-            display: none;
-        "
-  ></div>
 </html>
