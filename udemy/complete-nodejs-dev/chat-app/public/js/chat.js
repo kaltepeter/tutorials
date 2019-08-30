@@ -15,6 +15,11 @@ const messageTemplate = document.querySelector("#message-template").innerHTML;
 const locMessageTemplate = document.querySelector("#loc-message-template")
   .innerHTML;
 
+//   options
+const { username, room } = Qs.parse(location.search, {
+  ignoreQueryPrefix: true
+});
+
 const scrollLatest = () => {
   const listItems = document.querySelectorAll(".mdc-list-item");
   listItems[listItems.length - 1].scrollIntoView();
@@ -71,3 +76,5 @@ document.querySelector("#send-location").addEventListener("click", () => {
     });
   });
 });
+
+socket.emit("join", { username, room });
