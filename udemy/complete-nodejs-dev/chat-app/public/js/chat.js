@@ -6,16 +6,31 @@ const socket = io();
 
 const $messageForm = document.querySelector("#message-form");
 const $messageInput = $messageForm.querySelector('input[type="text"]');
-const $messageFormButton = $messageForm.querySelector('input[type="submit"]');
+const $messageFormButton = $messageForm.querySelector('button[type="submit"]');
 const $sendLocationButton = document.querySelector("#send-location");
 const $messages = document.querySelector("#messages");
 
 // templates
 const messageTemplate = document.querySelector("#message-template").innerHTML;
+const locMessageTemplate = document.querySelector("#loc-message-template")
+  .innerHTML;
+
+const scrollLatest = () => {
+  const listItems = document.querySelectorAll(".mdc-list-item");
+  listItems[listItems.length - 1].scrollIntoView();
+};
 
 socket.on("message", message => {
   const html = Mustache.render(messageTemplate, {
     message
+  });
+  $messages.insertAdjacentHTML("beforeend", html);
+  scrollLatest();
+});
+
+socket.on("locationMessage", url => {
+  const html = Mustache.render(locMessageTemplate, {
+    url
   });
   $messages.insertAdjacentHTML("beforeend", html);
 });
@@ -49,8 +64,8 @@ document.querySelector("#send-location").addEventListener("click", () => {
   navigator.geolocation.getCurrentPosition(position => {
     const { latitude, longitude } = position.coords;
     socket.emit("sendLocation", { latitude, longitude }, () => {
-      console.log(`Location shared!`);
       $sendLocationButton.removeAttribute("disabled");
+      console.log(`Location shared!`);
     });
   });
 });
