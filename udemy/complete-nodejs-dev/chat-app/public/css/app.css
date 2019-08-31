@@ -26,9 +26,41 @@ body {
   width: 100%;
   padding: 0;
   margin: 0;
+  display: flex;
+  /* min-height: 100vh; */
+  overflow: hidden;
+  justify-content: center;
+}
+
+.mdc-drawer__header {
+  background: var(--p-dark);
+}
+
+.mdc-drawer-app-content {
+  flex: 1;
+  /* overflow: hidden; */
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: center;
+  /* height: 100vh; */
+  min-height: 100vh;
+  /* min-width: 70vw; */
+}
+
+.main-content {
+  overflow: auto;
+  /* min-height: 100%; */
+}
+
+.app-bar {
+  position: absolute;
 }
 
 .page {
+  /* flex: 1 0 100vh; */
   height: 100vh;
   width: 80%;
   overflow: hidden;
@@ -37,15 +69,21 @@ body {
   flex-flow: column nowrap;
 }
 
+.side-spacer {
+  /* flex: 0; */
+  flex: 0 0 10vw;
+  height: 100vh;
+}
+
 header {
-  padding-left: 16px;
-  padding-right: 16px;
+  flex: 0 0 auto;
 }
 
 main {
-  flex: 1 0 auto;
+  /* flex: 1 0 auto; */
   /* overflow: auto; */
   /* min-height: min-content; */
+  flex: 1 0 auto;
 }
 
 .overflow-container {
@@ -54,6 +92,7 @@ main {
 }
 
 footer {
+  flex: 0 0 auto;
   background: var(--p-dark);
   display: flex;
   flex-flow: column nowrap;
@@ -113,4 +152,11 @@ footer form .mdc-button {
 
 .centered-form form .mdc-form-field {
   width: 60%;
+}
+
+a.mdc-theme--on-primary:link,
+a.mdc-theme--on-primary:visited,
+a.mdc-theme--on-primary:active,
+a.mdc-theme--on-primary:hover {
+  color: var(--p-dark);
 }
