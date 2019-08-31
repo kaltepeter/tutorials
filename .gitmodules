@@ -43,3 +43,6 @@
 [submodule "testing-workshop-cypress"]
 	path = testing-workshop-cypress
 	url = https://github.com/kaltepeter/testing-workshop-cypress.git
+[submodule "codelabs.google/material-components-web-codelabs"]
+	path = codelabs.google/material-components-web-codelabs
+	url = git@github.com:kaltepeter/material-components-web-codelabs.git
