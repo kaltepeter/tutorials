@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      property="og:image"
+      content="https://cdn.glitch.com/9c389208-b279-4e96-bcbc-e5f8712d8706%2Ftheme-builder-meta%20copy.png?1555366209261"
+    />
+    <!-- import Material Icons from Google Fonts -->
+    <!-- https://material.io/resources/icons/?icon=message&style=twotone -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500|Roboto+Mono|Roboto:900i|Material+Icons+Two+Tone"
+    />
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png" />
+    <link rel="icon" href="/img/favicon.png" />
+    <title>Chat App</title>
+
+    <link
+      href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+    <link rel="stylesheet" href="/css/app.css" />
+    <!-- <link rel="stylesheet" href="/css/styles.min.css" /> -->
+  </head>
+  <body class="mdc-typography mdc-theme--background">
+    <div class="chat page mdc-theme--on-primary">
+      <aside class="mdc-drawer mdc-drawer--modal mdc-theme--primary-bg">
+        <div class="mdc-drawer__content chat__sidebar" id="sidebar"></div>
+        <button class="mdc-button mdc-button--raised close-button">
+          <span class="mdc-button__label">Close</span>
+        </button>
+      </aside>
+      <div class="mdc-drawer-scrim"></div>
+      <div class="mdc-drawer-app-content chat__main">
+        <header
+          class="mdc-top-app-bar mdc-top-app-bar--fixed app-bar mdc-theme--primary-bg mdc-theme--on-primary mdc-typography--headline4"
+          id="app-bar"
+        >
+          <div class="mdc-top-app-bar__row">
+            <section
+              class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start"
+            >
+              <button
+                class="mdc-icon-button material-icons-two-tone mdc-top-app-bar__navigation-icon"
+              >
+                menu
+              </button>
+              <h1 class="mdc-top-app-bar__title mdc-typography--headline4">
+                Chat App
+              </h1>
+            </section>
+          </div>
+        </header>
+        <main
+          id="main-content"
+          class="mdc-typography--body1 mdc-theme--surface mdc-theme--on-surface overflow-container main-content"
+        >
+          <ul
+            class="mdc-list mdc-list--two-line mdc-list--non-interactive chat__messages mdc-top-app-bar--fixed-adjust"
+            id="messages"
+          ></ul>
+        </main>
+        <footer class="mdc-typography--body2 mdc-theme--on-primary compose">
+          <form name="message-form" id="message-form">
+            <fieldset class="message-input">
+              <div
+                class="mdc-text-field mdc-text-field--with-leading-icon mdc-text-field--no-label"
+              >
+                <i class="material-icons-two-tone mdc-text-field__icon"
+                  >message</i
+                >
+                <input
+                  class="mdc-text-field__input"
+                  type="text"
+                  id="text-field-message-input"
+                  id="message"
+                  name="message"
+                  placeholder="Message"
+                  aria-label="Message"
+                  required
+                  autocomplete="off"
+                  minlength="2"
+                  maxlength="100"
+                />
+                <div class="mdc-line-ripple"></div>
+              </div>
+              <div class="mdc-text-field-helper-line">
+                <p
+                  class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg mdc-text-field-character-counter"
+                  id="text-field-fullwidth-helper-helper-text"
+                >
+                  2 / 100
+                </p>
+              </div>
+            </fieldset>
+            <fieldset>
+              <div class="">
+                <button
+                  type="submit"
+                  class="mdc-button mdc-button--raised mdc-button__label mdc-theme--primary-bg mdc-typography--button"
+                >
+                  <i
+                    class="material-icons-two-tone mdc-theme--text-icon-on-dark mdc-theme--on-primary"
+                  >
+                    send
+                  </i>
+                </button>
+              </div>
+            </fieldset>
+          </form>
+          <section class="spacer"></section>
+          <button
+            id="send-location"
+            type="button"
+            class="mdc-button mdc-button--raised mdc-button__label mdc-typography--button send-location"
+          >
+            Send location
+          </button>
+          <section class="spacer"></section>
+        </footer>
+      </div>
+    </div>
+    <script id="message-template" type="text/html">
+      <li class="mdc-list-item message" tabindex="0">
+            <i
+            class="material-icons-two-tone mdc-list-item__graphic"
+          >
+            chat_bubble
+          </i>
+          <span class="mdc-list-item__text">
+              <span class="mdc-list-item__primary-text">{{message}}</span>
+              <span class="mdc-list-item__secondary-text">{{username}}</span>
+          </span>
+          <span class="mdc-list-item__meta">{{createdAt}}</span>
+      </li>
+      <li role="separator" class="mdc-list-divider"></li>
+    </script>
+    <script id="loc-message-template" type="text/html">
+      <li class="mdc-list-item message" tabindex="0">
+        <i
+        class="material-icons-two-tone mdc-list-item__graphic"
+        >
+        my_location
+        </i>
+        <span class="mdc-list-item__text">
+            <span class="mdc-list-item__primary-text">
+                <a class="mdc-list-item__text mdc-typography--button" href="{{url}}" target="_blank">My current location</a>
+            </span>
+            <span class="mdc-list-item__secondary-text">{{username}}</span>
+        </span>
+        <span class="mdc-list-item__meta">{{createdAt}}</span>
+        </span>
+        </li>
+        <li role="separator" class="mdc-list-divider"></li>
+    </script>
+    <script id="sidebar-template" type="text/html">
+      <div class="mdc-drawer__header mdc-theme--on-primary">
+        <h2 class="mdc-drawer__title room-title mdc-typography--headline5">{{room}}</h2>
+      </div>
+      <hr class="mdc-list-divider">
+      <h6 class="mdc-list-group__subheader list-title mdc-typography--subtitle1">Users</h6>
+      <nav class="mdc-list users">
+        {{#users}}
+        <a href="#" class="mdc-list-item">
+            <i class="material-icons-two-tone mdc-list-item__graphic" aria-hidden="true">person</i>
+          <span class="mdc-list-item__text">{{username}}</span>
+        </a>
+        {{/users}}
+      </nav>
+    </script>
+    <script src="/js/mdc.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chat.js"></script>
+  </body>
+  <div
+    id="screen-shader"
+    style="
+            transition: opacity 0.1s ease 0s; 
+            z-index: 2147483647;
+            margin: 0; 
+            border-radius: 0; 
+            padding: 0; 
+            background: #111111; 
+            pointer-events: none; 
+            position: fixed; 
+            top: -10%; 
+            right: -10%; 
+            width: 120%; 
+            height: 120%; 
+            opacity: 0.5840;
+            mix-blend-mode: multiply; 
+            display: none;
+        "
+  ></div>
+</html>
