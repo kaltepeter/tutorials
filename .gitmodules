@@ -46,3 +46,6 @@
 [submodule "codelabs.google/material-components-web-codelabs"]
 	path = codelabs.google/material-components-web-codelabs
 	url = git@github.com:kaltepeter/material-components-web-codelabs.git
+[submodule "ngconf/cypress_io_introduction_workshop"]
+	path = ngconf/cypress_io_introduction_workshop
+	url = git@github.com:kaltepeter/cypress_io_introduction_workshop.git
