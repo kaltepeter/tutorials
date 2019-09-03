@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./App.css";
 
 const Hero = () => {
@@ -12,27 +13,50 @@ const Hero = () => {
   );
 };
 
-const Book = ({ title }) => {
+const Book = ({ title, onClick }) => {
   return (
     <div className="answer">
-      <h4>{title}</h4>
+      <h4 onClick={e => onClick(title)}>{title}</h4>
     </div>
   );
 };
 
-const Turn = ({ author, books }) => {
+const Turn = ({ author, books, highlight, onAnswerSelected }) => {
+  const highlightToBgColor = highlight => {
+    const mapping = {
+      none: "",
+      correct: "green",
+      wrong: "red"
+    };
+    return mapping[highlight];
+  };
   return (
-    <div className="row turn" style={{ backgroundColor: "white" }}>
+    <div
+      className="row turn"
+      style={{ backgroundColor: highlightToBgColor(highlight) }}
+    >
       <div className="col-4 offset-1">
         <img src={author.imageUrl} className="authorimage" alt="Author" />
       </div>
       <div className="col-6">
         {books.map(title => (
-          <Book title={title} key={title} />
+          <Book title={title} key={title} onClick={onAnswerSelected} />
         ))}
       </div>
     </div>
   );
+};
+
+Turn.propTypes = {
+  author: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    imageSource: PropTypes.string.isRequired,
+    books: PropTypes.arrayOf(PropTypes.string).isRequired
+  }),
+  books: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onAnswerSelected: PropTypes.func.isRequired,
+  highlight: PropTypes.string.isRequired
 };
 
 const Continue = () => {
@@ -53,11 +77,15 @@ const Footer = () => {
   );
 };
 
-const AuthorQuiz = ({ turnData }) => {
+const AuthorQuiz = ({ turnData, highlight, onAnswerSelected }) => {
   return (
     <div className="container-fluid">
       <Hero />
-      <Turn {...turnData} />
+      <Turn
+        {...turnData}
+        highlight={highlight}
+        onAnswerSelected={onAnswerSelected}
+      />
       <Continue />
       <Footer />
     </div>
