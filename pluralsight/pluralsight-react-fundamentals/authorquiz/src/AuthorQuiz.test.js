@@ -85,10 +85,9 @@ describe("Author Quiz", () => {
 
   describe("when the first answer is selected", () => {
     let wrapper;
-    let handleAnswerSelected;
+    const handleAnswerSelected = jest.fn();
 
-    beforeAll(() => {
-      handleAnswerSelected = jest.fn();
+    beforeAll(done => {
       wrapper = mount(
         <AuthorQuiz {...state} onAnswerSelected={handleAnswerSelected} />
       );
@@ -96,6 +95,7 @@ describe("Author Quiz", () => {
         .find(".answer")
         .first()
         .simulate("click");
+      done();
     });
 
     it("onAnserSelected should be called", () => {

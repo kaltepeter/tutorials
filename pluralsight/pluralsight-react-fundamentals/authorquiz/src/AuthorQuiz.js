@@ -15,8 +15,8 @@ const Hero = () => {
 
 const Book = ({ title, onClick }) => {
   return (
-    <div className="answer">
-      <h4 onClick={e => onClick(title)}>{title}</h4>
+    <div className="answer" onClick={e => onClick(title)}>
+      <h4>{title}</h4>
     </div>
   );
 };
