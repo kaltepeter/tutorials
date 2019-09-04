@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { shuffle, sample } from "underscore";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
@@ -68,9 +69,27 @@ const onAnswerSelected = answer => {
   render();
 };
 
+const App = () => {
+  return <AuthorQuiz {...state} onAnswerSelected={onAnswerSelected} />;
+};
+
+const AddAuthorForm = ({ match }) => {
+  return (
+    <div>
+      <h1>Add Author</h1>
+      <p>{JSON.stringify(match)}</p>
+    </div>
+  );
+};
+
 const render = () => {
   ReactDOM.render(
-    <AuthorQuiz {...state} onAnswerSelected={onAnswerSelected} />,
+    <BrowserRouter>
+      <React.Fragment>
+        <Route exact path="/" component={App} />
+        <Route path="/add" component={AddAuthorForm} />
+      </React.Fragment>
+    </BrowserRouter>,
     document.getElementById("root")
   );
 };

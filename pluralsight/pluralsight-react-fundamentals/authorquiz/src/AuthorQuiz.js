@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import "./App.css";
 
 const Hero = () => {
@@ -87,6 +88,9 @@ const AuthorQuiz = ({ turnData, highlight, onAnswerSelected }) => {
         onAnswerSelected={onAnswerSelected}
       />
       <Continue />
+      <p>
+        <Link to="/add">Add Author</Link>
+      </p>
       <Footer />
     </div>
   );
