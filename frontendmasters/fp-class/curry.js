@@ -60,3 +60,4 @@ const log = curry((tag,x) => (console.log(tag,x), x));
 
 const shout2 = compose(exclaim, log('here'), toUpper);
 console.log(shout2('yo'));
+
