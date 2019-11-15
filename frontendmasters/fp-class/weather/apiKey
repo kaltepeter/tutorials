@@ -1,0 +1,2 @@
+const apiKey = "20826baf21d101eaf8e73a30e4322170";
+export {apiKey};
