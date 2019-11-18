@@ -1,6 +1,6 @@
 {
-  "name": "hello",
-  "version": "0.0.0",
+  "name": "@schematics/ka-hello",
+  "version": "1.0.0",
   "description": "A blank schematics",
   "scripts": {
     "build": "tsc -p tsconfig.json",
