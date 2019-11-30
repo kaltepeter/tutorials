@@ -49,3 +49,6 @@
 [submodule "ngconf/cypress_io_introduction_workshop"]
 	path = ngconf/cypress_io_introduction_workshop
 	url = git@github.com:kaltepeter/cypress_io_introduction_workshop.git
+[submodule "d3/d3-walkthroughs"]
+	path = d3/d3-walkthroughs
+	url = https://github.com/kaltepeter/d3-walkthroughs.git
