@@ -48,7 +48,7 @@ async function drawScatterplotChart() {
   const colorScale = d3
     .scaleLinear()
     .domain(d3.extent(dataset, colorAccessor))
-    .range(["white", "black"]);
+    .range(["skyblue", "darkslategrey"]);
 
   //   dataset.forEach(d => {
   //     bounds
