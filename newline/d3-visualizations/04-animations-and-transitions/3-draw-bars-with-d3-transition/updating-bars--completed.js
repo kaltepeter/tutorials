@@ -39,6 +39,8 @@ async function drawBars() {
       .style("transform", `translateY(${dimensions.boundedHeight}px)`)
     .append("text")
       .attr("class", "x-axis-label")
+      .attr("x", dimensions.boundedWidth / 2)
+      .attr("y", dimensions.margin.bottom - 10)
 
   const drawHistogram = metric => {
     const metricAccessor = d => d[metric]
@@ -65,46 +67,79 @@ async function drawBars() {
 
     // 5. Draw data
 
+    const exitTransition = d3.transition()
+      .duration(600)
+
+    const updateTransition = exitTransition.transition()
+      .duration(600)
+
     const barPadding = 1
 
     let binGroups = bounds.select(".bins")
       .selectAll(".bin")
       .data(bins)
 
-    binGroups.exit().remove()
+    const oldBinGroups = binGroups.exit()
+    oldBinGroups.selectAll("rect")
+        .style("fill", "orangered")
+      .transition(exitTransition)
+        .attr("y", dimensions.boundedHeight)
+        .attr("height", 0)
+
+    oldBinGroups.selectAll("text")
+      .transition(exitTransition)
+      .attr("y", dimensions.boundedHeight)
+
+    oldBinGroups
+      .transition(exitTransition)
+        .remove()
 
     const newBinGroups = binGroups.enter().append("g")
         .attr("class", "bin")
 
     newBinGroups.append("rect")
+        .attr("height", 0)
+        .attr("x", d => xScale(d.x0) + barPadding)
+        .attr("y", dimensions.boundedHeight)
+        .attr("width", d => d3.max([
+          0,
+          xScale(d.x1) - xScale(d.x0) - barPadding
+        ]))
+        .style("fill", "yellowgreen")
+
     newBinGroups.append("text")
+        .attr("x", d => xScale(d.x0) + (xScale(d.x1) - xScale(d.x0)) / 2)
+        .attr("y", dimensions.boundedHeight)
 
     // update binGroups to include new points
     binGroups = newBinGroups.merge(binGroups)
 
     const barRects = binGroups.select("rect")
+      .transition(updateTransition)
         .attr("x", d => xScale(d.x0) + barPadding)
         .attr("y", d => yScale(yAccessor(d)))
+        .attr("height", d => dimensions.boundedHeight - yScale(yAccessor(d)))
         .attr("width", d => d3.max([
           0,
           xScale(d.x1) - xScale(d.x0) - barPadding
         ]))
-        .attr("height", d => dimensions.boundedHeight - yScale(yAccessor(d)))
+      .transition()
+        .style("fill", "cornflowerblue")
 
     const barText = binGroups.select("text")
+      .transition(updateTransition)
         .attr("x", d => xScale(d.x0) + (xScale(d.x1) - xScale(d.x0)) / 2)
-        .attr("y", 0)
-        .style('transform', d => `translateY(${yScale(yAccessor(d)) - 5}px)`)
-        .text(d => yAccessor(d) || "");
+        .attr("y", d => yScale(yAccessor(d)) - 5)
+        .text(d => yAccessor(d) || "")
 
     const mean = d3.mean(dataset, metricAccessor)
 
     const meanLine = bounds.selectAll(".mean")
-        // .attr("x1", xScale(mean))
-        // .attr("x2", xScale(mean))
+      .transition(updateTransition)
+        .attr("x1", xScale(mean))
+        .attr("x2", xScale(mean))
         .attr("y1", -20)
         .attr("y2", dimensions.boundedHeight)
-        .style('transform', `translateX(${xScale(mean)}px)`);
 
     // 6. Draw peripherals
 
@@ -112,11 +147,11 @@ async function drawBars() {
       .scale(xScale)
 
     const xAxis = bounds.select(".x-axis")
+      .transition(updateTransition)
       .call(xAxisGenerator)
 
+
     const xAxisLabel = xAxis.select(".x-axis-label")
-        .attr("x", dimensions.boundedWidth / 2)
-        .attr("y", dimensions.margin.bottom - 10)
         .text(metric)
   }
 

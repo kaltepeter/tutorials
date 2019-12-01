@@ -39,6 +39,8 @@ async function drawBars() {
       .style("transform", `translateY(${dimensions.boundedHeight}px)`)
     .append("text")
       .attr("class", "x-axis-label")
+      .attr("x", dimensions.boundedWidth / 2)
+      .attr("y", dimensions.margin.bottom - 10)
 
   const drawHistogram = metric => {
     const metricAccessor = d => d[metric]
@@ -71,7 +73,8 @@ async function drawBars() {
       .selectAll(".bin")
       .data(bins)
 
-    binGroups.exit().remove()
+    const oldBinGroups = binGroups.exit()
+    oldBinGroups.remove()
 
     const newBinGroups = binGroups.enter().append("g")
         .attr("class", "bin")
@@ -85,26 +88,24 @@ async function drawBars() {
     const barRects = binGroups.select("rect")
         .attr("x", d => xScale(d.x0) + barPadding)
         .attr("y", d => yScale(yAccessor(d)))
+        .attr("height", d => dimensions.boundedHeight - yScale(yAccessor(d)))
         .attr("width", d => d3.max([
           0,
           xScale(d.x1) - xScale(d.x0) - barPadding
         ]))
-        .attr("height", d => dimensions.boundedHeight - yScale(yAccessor(d)))
 
     const barText = binGroups.select("text")
         .attr("x", d => xScale(d.x0) + (xScale(d.x1) - xScale(d.x0)) / 2)
-        .attr("y", 0)
-        .style('transform', d => `translateY(${yScale(yAccessor(d)) - 5}px)`)
-        .text(d => yAccessor(d) || "");
+        .attr("y", d => yScale(yAccessor(d)) - 5)
+        .text(d => yAccessor(d) || "")
 
     const mean = d3.mean(dataset, metricAccessor)
 
     const meanLine = bounds.selectAll(".mean")
-        // .attr("x1", xScale(mean))
-        // .attr("x2", xScale(mean))
+        .attr("x1", xScale(mean))
+        .attr("x2", xScale(mean))
         .attr("y1", -20)
         .attr("y2", dimensions.boundedHeight)
-        .style('transform', `translateX(${xScale(mean)}px)`);
 
     // 6. Draw peripherals
 
@@ -115,8 +116,6 @@ async function drawBars() {
       .call(xAxisGenerator)
 
     const xAxisLabel = xAxis.select(".x-axis-label")
-        .attr("x", dimensions.boundedWidth / 2)
-        .attr("y", dimensions.margin.bottom - 10)
         .text(metric)
   }
 
