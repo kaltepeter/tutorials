@@ -8,12 +8,7 @@ async function drawLineChart() {
   const dateFormatter = d3.timeFormat("%Y-%m-%d");
   const xAccessor = d => dateParser(d.date);
   dataset = dataset.sort((a, b) => xAccessor(a) - xAccessor(b));
-
   const downsampledData = downsampleData(dataset, xAccessor, yAccessor);
-  const weeks = d3.timeWeeks(
-    xAccessor(dataset[0]),
-    xAccessor(dataset[dataset.length - 1])
-  );
 
   // 2. Create chart dimensions
 
@@ -49,13 +44,32 @@ async function drawLineChart() {
 
   const defs = bounds.append("defs");
 
+  const gradientId = "timeline-gradient";
+  const gradient = defs
+    .append("linearGradient")
+    .attr("id", gradientId)
+    .attr("x1", "0%")
+    .attr("x2", "0%")
+    .attr("y1", "0%")
+    .attr("y2", "100%")
+    .attr("spreadMethod", "pad");
+
+  const stops = ["#34495e", "#c8d6e5", "#34495e"];
+  stops.forEach((stop, i) => {
+    gradient
+      .append("stop")
+      .attr("offset", `${(i * 100) / (stops.length - 1)}%`)
+      .attr("stop-color", stop)
+      .attr("stop-opacity", 1);
+  });
+
   // 4. Create scales
 
   const yScale = d3
     .scaleLinear()
     .domain(d3.extent(dataset, yAccessor))
     .range([dimensions.boundedHeight, 0])
-    .nice();
+    .nice(5);
 
   const xScale = d3
     .scaleTime()
@@ -63,20 +77,20 @@ async function drawLineChart() {
     .range([0, dimensions.boundedWidth]);
 
   // create grid marks
-  const yAxisGeneratorGridMarks = d3
-    .axisLeft(yScale)
-    .ticks()
-    .tickSize(-dimensions.boundedWidth)
-    .tickFormat("");
+  // const yAxisGeneratorGridMarks = d3
+  //   .axisLeft(yScale)
+  //   .ticks()
+  //   .tickSize(-dimensions.boundedWidth)
+  //   .tickFormat("");
 
-  const yAxisGridMarks = bounds
-    .append("g")
-    .attr("class", "y-axis-grid-marks")
-    .call(yAxisGeneratorGridMarks);
+  // const yAxisGridMarks = bounds
+  //   .append("g")
+  //   .attr("class", "y-axis-grid-marks")
+  //   .call(yAxisGeneratorGridMarks);
 
   // 5. Draw data
   const seasonBoundaries = ["3-20", "6-21", "9-21", "12-21"];
-  const seasonNames = ["Spring, Summer", "Fall", "Winter"];
+  const seasonNames = ["Spring", "Summer", "Fall", "Winter"];
 
   let seasonsData = [];
   const startDate = xAccessor(dataset[0]);
@@ -115,6 +129,19 @@ async function drawLineChart() {
     .attr("y", seasonOffset)
     .attr("height", dimensions.boundedHeight - seasonOffset)
     .attr("class", d => `season ${d.name}`);
+
+  const areaGenerator = d3
+    .area()
+    .x(d => xScale(xAccessor(d)))
+    .y0(dimensions.boundedHeight / 2)
+    .y1(d => yScale(yAccessor(d)))
+    .curve(d3.curveBasis);
+
+  // const area = bounds
+  //   .append("path")
+  //   .attr("class", "area")
+  //   .attr("d", areaGenerator(dataset))
+  //   .style("fill", "url(#timeline-gradient)");
 
   const dots = bounds
     .selectAll(".dot")
