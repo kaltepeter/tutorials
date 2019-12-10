@@ -6,6 +6,9 @@ async function drawScatter() {
   // set data constants
   const xAccessor = d => d.temperatureMin;
   const yAccessor = d => d.temperatureMax;
+  const colorScaleYear = 2000;
+  const parseDate = d3.timeParse("%Y-%m-%d");
+  const colorAccessor = d => parseDate(d.date).setYear(colorScaleYear);
 
   // 2. Create chart dimensions
 
@@ -20,7 +23,9 @@ async function drawScatter() {
       left: 50
     },
     histogramMargin: 10,
-    histogramHeight: 70
+    histogramHeight: 70,
+    legendWidth: 250,
+    legendHeight: 26
   };
   dimensions.boundedWidth =
     dimensions.width - dimensions.margin.left - dimensions.margin.right;
@@ -67,10 +72,6 @@ async function drawScatter() {
     .domain(temperaturesExtent)
     .range([dimensions.boundedHeight, 0])
     .nice();
-
-  const colorScaleYear = 2000;
-  const parseDate = d3.timeParse("%Y-%m-%d");
-  const colorAccessor = d => parseDate(d.date);
 
   const colorScale = d3
     .scaleSequential()
@@ -194,6 +195,70 @@ async function drawScatter() {
     .attr("y", -dimensions.margin.left + 10)
     .html("Maximum Temperature (&deg;F)");
 
+  const legendGroup = bounds
+    .append("g")
+    .attr(
+      "transform",
+      `translate(${dimensions.boundedWidth -
+        dimensions.legendWidth -
+        9}, ${dimensions.boundedHeight - 37})`
+    );
+
+  const defs = wrapper.append("defs");
+
+  const numberOfGradientStops = 10;
+  const stops = d3
+    .range(numberOfGradientStops)
+    .map(i => i / (numberOfGradientStops - 1));
+
+  const legendGradientId = "legend-gradient";
+  const gradient = defs
+    .append("linearGradient")
+    .attr("id", legendGradientId)
+    .selectAll("stop")
+    .data(stops)
+    .enter()
+    .append("stop")
+    .attr("stop-color", d => d3.interpolateRainbow(-d))
+    .attr("offset", d => `${d * 100}%`);
+
+  const legendGradient = legendGroup
+    .append("rect")
+    .attr("height", dimensions.legendHeight)
+    .attr("width", dimensions.legendWidth)
+    .style("fill", `url(#${legendGradientId})`);
+
+  const tickValues = [
+    d3.timeParse("%m/%d/%Y")(`4/1/${colorScaleYear}`),
+    d3.timeParse("%m/%d/%Y")(`7/1/${colorScaleYear}`),
+    d3.timeParse("%m/%d/%Y")(`10/1/${colorScaleYear}`)
+  ];
+
+  const legendTickScale = d3
+    .scaleLinear()
+    .domain(colorScale.domain())
+    .range([0, dimensions.legendWidth]);
+
+  const legendValues = legendGroup
+    .selectAll(".legend-value")
+    .data(tickValues)
+    .enter()
+    .append("text")
+    .attr("class", "legend-value")
+    .attr("x", legendTickScale)
+    .attr("y", -6)
+    .text(d3.timeFormat("%b"));
+
+  const legendValueTicks = legendGroup
+    .selectAll(".legend-tick")
+    .data(tickValues)
+    .enter()
+    .append("line")
+    .attr("class", "legend-tick")
+    .attr("x1", legendTickScale)
+    .attr("x2", legendTickScale)
+    .attr("y1", 6);
+
   // 7. Set up interactions
   const voronoiGenerator = d3
     .voronoi()
@@ -292,6 +357,127 @@ async function drawScatter() {
   function onVoronoiMouseLeave() {
     hoverElementsGroup.style("opacity", 0);
     tooltip.style("opacity", 0);
+  }
+
+  legendGradient
+    .on("mousemove", onLegendMouseMove)
+    .on("mouseleave", onLegendMouseLeave);
+
+  const legendHighlightBarWidth = dimensions.legendWidth * 0.05;
+  const legendHighlightGroup = legendGroup.append("g").attr("opacity", 0);
+  const legendHighlightBar = legendHighlightGroup
+    .append("rect")
+    .attr("class", "legend-highlight-bar")
+    .attr("width", legendHighlightBarWidth)
+    .attr("height", dimensions.legendHeight);
+
+  const legendHighlightText = legendHighlightGroup
+    .append("text")
+    .attr("class", "legend-highlight-text")
+    .attr("x", legendHighlightBarWidth / 2)
+    .attr("y", -6);
+
+  const hoverTopHistogram = topHistogramBounds.append("path");
+  const hoverRightHistogram = rightHistogramBounds.append("path");
+
+  function onLegendMouseMove(e) {
+    const [x] = d3.mouse(this);
+    const minDateToHighlight = new Date(
+      legendTickScale.invert(x - legendHighlightBarWidth)
+    );
+    const maxDateToHighlight = new Date(
+      legendTickScale.invert(x + legendHighlightBarWidth)
+    );
+
+    const barX = d3.median([
+      0,
+      x - legendHighlightBarWidth / 2,
+      dimensions.legendWidth - legendHighlightBarWidth
+    ]);
+
+    legendHighlightGroup
+      .style("opacity", 1)
+      .style("transform", `translateX(${barX}px)`);
+
+    const formatLegendDate = d3.timeFormat("%b %d");
+    legendHighlightText.text(
+      [
+        formatLegendDate(minDateToHighlight),
+        formatLegendDate(maxDateToHighlight)
+      ].join(" - ")
+    );
+
+    legendValues.style("opacity", 0);
+    legendValueTicks.style("opacity", 0);
+
+    dots
+      .transition()
+      .duration(100)
+      .style("opacity", 0.08)
+      .attr("r", 2);
+
+    const getYear = d => +d3.timeFormat("%Y")(d);
+    const isDayWithinRange = d => {
+      const date = colorAccessor(d);
+
+      if (getYear(minDateToHighlight) < colorScaleYear) {
+        // if dates wrap around to previous year,
+        // check if this date is after the min date
+        return (
+          date >= new Date(minDateToHighlight).setYear(colorScaleYear) ||
+          date <= maxDateToHighlight
+        );
+      } else if (getYear(maxDateToHighlight) > colorScaleYear) {
+        // if dates wrap around to next year,
+        // check if this date is before the max date
+        return (
+          date <= new Date(maxDateToHighlight).setYear(colorScaleYear) ||
+          date >= minDateToHighlight
+        );
+      } else {
+        return date >= minDateToHighlight && date <= maxDateToHighlight;
+      }
+    };
+
+    const relevantDots = dots
+      .filter(isDayWithinRange)
+      .transition()
+      .duration(100)
+      .style("opacity", 1)
+      .attr("r", 5);
+
+    const hoveredDates = dataset.filter(isDayWithinRange);
+    const hoveredDate = d3.isoParse(legendTickScale.invert(x));
+    hoverTopHistogram
+      .attr("d", d =>
+        topHistogramLineGenerator(topHistogramGenerator(hoveredDates))
+      )
+      .attr("fill", colorScale(hoveredDate))
+      .attr("stroke", "white")
+      .style("opacity", 1);
+
+    hoverRightHistogram
+      .attr("d", d =>
+        rightHistogramLineGenerator(rightHistogramGenerator(hoveredDates))
+      )
+      .attr("fill", colorScale(hoveredDate))
+      .attr("stroke", "white")
+      .style("opacity", 1);
+  }
+
+  function onLegendMouseLeave() {
+    dotsGroup
+      .selectAll("dot")
+      .transition()
+      .duration(500)
+      .style("opacity", 1)
+      .attr("r", 4);
+
+    legendValues.style("opacity", 1);
+    legendValueTicks.style("opacity", 1);
+    legendHighlightGroup.style("opacity", 0);
+    hoverTopHistogram.style("opacity", 0);
+    hoverRightHistogram.style("opacity", 0);
   }
 }
 drawScatter();
