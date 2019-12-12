@@ -1,37 +1,35 @@
-import React, { useState, useEffect, useRef } from "react"
-import * as d3 from "d3"
-import { getTimelineData, getScatterData } from "./utils/dummyData"
+import React, { useState, useEffect, useRef } from "react";
+import * as d3 from "d3";
+import { getTimelineData, getScatterData } from "./utils/dummyData";
 
-import Timeline from "./Timeline"
-import ScatterPlot from "./ScatterPlot"
-import Histogram from "./Histogram"
+import Timeline from "./Timeline";
+import ScatterPlot from "./ScatterPlot";
+import Histogram from "./Histogram";
 // import Timeline from "./completed/Timeline"
 // import ScatterPlot from "./completed/ScatterPlot"
 // import Histogram from "./completed/Histogram"
 
-import "./styles.css"
+import "./styles.css";
 
-const parseDate = d3.timeParse("%m/%d/%Y")
-const dateAccessor = d => parseDate(d.date)
-const temperatureAccessor = d => d.temperature
-const humidityAccessor = d => d.humidity
+const parseDate = d3.timeParse("%m/%d/%Y");
+const dateAccessor = d => parseDate(d.date);
+const temperatureAccessor = d => d.temperature;
+const humidityAccessor = d => d.humidity;
 
 const getData = () => ({
   timeline: getTimelineData(),
-  scatter: getScatterData(),
-})
+  scatter: getScatterData()
+});
 const App = () => {
-  const [data, setData] = useState(getData())
+  const [data, setData] = useState(getData());
 
   useInterval(() => {
-    setData(getData())
-  }, 4000)
+    setData(getData());
+  }, 4000);
 
   return (
     <div className="App">
-      <h1>
-        Weather Dashboard
-      </h1>
+      <h1>Weather Dashboard</h1>
       <div className="App__charts">
         <Timeline
           data={data.timeline}
@@ -53,11 +51,10 @@ const App = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
-
+export default App;
 
 function useInterval(callback, delay) {
   const savedCallback = useRef();
