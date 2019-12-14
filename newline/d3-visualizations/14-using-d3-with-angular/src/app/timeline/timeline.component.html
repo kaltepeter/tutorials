@@ -1,2 +1,10 @@
-<div>
+<div #container>
+  <app-chart [dimensions]="dimensions">
+    <svg:g
+      appLine
+      [data]="data"
+      [xAccessor]="xAccessorScaled"
+      [yAccessor]="yAccessorScaled"
+    ></svg:g>
+  </app-chart>
 </div>
