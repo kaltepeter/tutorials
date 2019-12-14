@@ -30,6 +30,7 @@ export class TimelineComponent implements AfterContentInit, OnChanges {
   public xAccessorScaled: AccessorType;
   public yAccessorScaled: AccessorType;
   public y0AccessorScaled: AccessorType;
+  public formatDate: (date: object) => string = d3.timeFormat("%-b %-d");
 
   @ViewChild("container", { static: true }) container: ElementRef;
 
