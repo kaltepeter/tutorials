@@ -6,9 +6,13 @@ import { Routes, Router, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'child', loadChildren: () => import('../child/child.module').then(m => m.ChildModule)
+  },
+  {
     path: '',
-  component: ItemsComponent
-}
+    pathMatch : 'full',
+    component : ItemsComponent
+  }
 ];
 
 @NgModule({
