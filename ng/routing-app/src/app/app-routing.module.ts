@@ -13,6 +13,7 @@ const routes: Routes = [
     {path: 'child-b', component: ChildBComponent},
   ]},
   {path: 'second-component', component: SecondComponent},
+  {path: 'items', loadChildren: () => import('./items/items.module').then(m => m.ItemsModule)},
   {path: '', redirectTo: '/first-component', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent }
 ];
