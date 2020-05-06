@@ -6,12 +6,13 @@ import { Routes, Router, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'child', loadChildren: () => import('../child/child.module').then(m => m.ChildModule)
-  },
-  {
     path: '',
-    pathMatch : 'full',
-    component : ItemsComponent
+    component : ItemsComponent,
+    children: [
+      {
+        path: 'child', loadChildren: () => import('../child/child.module').then(m => m.ChildModule)
+      }
+    ]
   }
 ];
 
