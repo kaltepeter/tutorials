@@ -10,6 +10,8 @@ import { ChildAComponent } from './child-a/child-a.component';
 import { ChildBComponent } from './child-b/child-b.component';
 import { CrisisCenterComponent } from './crisis-center/crisis-center/crisis-center.component';
 import { CrisisCenterHomeComponent } from './crisis-center/crisis-center-home/crisis-center-home.component';
+import { CrisisListComponent } from './crisis-center/crisis-list/crisis-list.component';
+import { CrisisDetailComponent } from './crisis-center/crisis-detail/crisis-detail.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { CrisisCenterHomeComponent } from './crisis-center/crisis-center-home/cr
     ChildAComponent,
     ChildBComponent,
     CrisisCenterComponent,
-    CrisisCenterHomeComponent
+    CrisisCenterHomeComponent,
+    CrisisListComponent,
+    CrisisDetailComponent
   ],
   imports: [
     BrowserModule,
