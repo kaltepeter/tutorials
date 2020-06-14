@@ -1,0 +1,26 @@
+{
+  "name": "@schematics/ka-hello",
+  "version": "1.0.0",
+  "description": "A blank schematics",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "build:watch": "tsc -p tsconfig.json --watch",
+    "test": "npm run build && jasmine src/**/*_spec.js"
+  },
+  "keywords": [
+    "schematics"
+  ],
+  "author": "",
+  "license": "MIT",
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^8.3.19",
+    "@angular-devkit/schematics": "^8.3.19",
+    "@schematics/angular": "^8.3.19",
+    "@types/jasmine": "^3.3.9",
+    "@types/node": "^8.0.31",
+    "assert": "^2.0.0",
+    "jasmine": "^3.3.1",
+    "typescript": "~3.5.3"
+  }
+}
