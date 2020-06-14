@@ -52,3 +52,6 @@
 [submodule "d3/d3-walkthroughs"]
 	path = d3/d3-walkthroughs
 	url = https://github.com/kaltepeter/d3-walkthroughs.git
+[submodule "ngrx-heroes"]
+	path = ngrx-heroes
+	url = git@github.com:kaltepeter/ngrx-heroes.git
