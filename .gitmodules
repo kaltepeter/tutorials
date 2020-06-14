@@ -55,3 +55,12 @@
 [submodule "ngrx-heroes"]
 	path = ngrx-heroes
 	url = git@github.com:kaltepeter/ngrx-heroes.git
+[submodule "cameoparison-starter"]
+	path = cameoparison-starter
+	url = git@github.com:kaltepeter/cameoparison-starter.git
+[submodule "birdland"]
+	path = birdland
+	url = git@github.com:kaltepeter/birdland.git
+[submodule "angular9-fundamentals-workshop"]
+	path = angular9-fundamentals-workshop
+	url = git@github.com:kaltepeter/angular9-fundamentals-workshop.git
