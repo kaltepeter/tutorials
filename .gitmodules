@@ -64,3 +64,6 @@
 [submodule "angular9-fundamentals-workshop"]
 	path = angular9-fundamentals-workshop
 	url = git@github.com:kaltepeter/angular9-fundamentals-workshop.git
+[submodule "mslearn-staticwebapp"]
+	path = mslearn-staticwebapp
+	url = git@github.com:kaltepeter/mslearn-staticwebapp.git
