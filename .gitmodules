@@ -67,3 +67,6 @@
 [submodule "mslearn-staticwebapp"]
 	path = mslearn-staticwebapp
 	url = git@github.com:kaltepeter/mslearn-staticwebapp.git
+[submodule "pluralsight/github-actions-course-template"]
+	path = pluralsight/github-actions-course-template
+	url = git@github.com:kaltepeter/github-actions-course-template.git
