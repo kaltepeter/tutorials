@@ -5,10 +5,9 @@ import {
   ElementRef,
   Inject,
   Input,
-  OnInit,
   Optional,
 } from '@angular/core';
-import { dinosaurIcons } from './dinosaur-icons';
+import { DinosaurIconsRegistryService } from "./dinosaur-icons-registry.service";
 
 @Component({
   selector: 'lib-dinosaur-icons',
@@ -17,20 +16,25 @@ import { dinosaurIcons } from './dinosaur-icons';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DinosaurIconsComponent {
-  @Input()
-  set name(iconName: string) {
-    const svgData = dinosaurIcons[iconName] || null;
-    this.svgIcon = this.svgElementFromString(svgData);;
-    this.element.nativeElement.appendChild(this.svgIcon);
-  }
-
   private svgIcon: SVGElement;
 
-  constructor(private element: ElementRef, @Optional() @Inject(DOCUMENT) private document: any) {}
+  @Input()
+    set name(iconName: string) {
+        if (this.svgIcon) {
+            this.element.nativeElement.removeChild(this.svgIcon);
+        }
+        const svgData = this.dinosaurIconRegistry.getIcon(iconName);
+        this.svgIcon = this.svgElementFromString(svgData);
+        this.element.nativeElement.appendChild(this.svgIcon);
+    }
 
-  private svgElementFromString(svgContent: string): SVGElement {
-    const div = this.document.createElement('DIV');
-    div.innerHTML = svgContent;
-    return div.querySelector('svg') || this.document.createElementNS('http://www.w3.org/2000/svg', 'path');
-}
+    constructor(private element: ElementRef, private dinosaurIconRegistry: DinosaurIconsRegistryService,
+                @Optional() @Inject(DOCUMENT) private document: any) {
+    }
+
+    private svgElementFromString(svgContent: string): SVGElement {
+        const div = this.document.createElement('DIV');
+        div.innerHTML = svgContent;
+        return div.querySelector('svg') || this.document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    }
 }
