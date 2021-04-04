@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:bundler": "webpack -w --node-development",
+    "dev:bundler": "webpack -w --mode=development",
     "dev:server": "nodemon --exec babel-node src/server/server.js --ignore dist/",
     "test": "jest"
   },
