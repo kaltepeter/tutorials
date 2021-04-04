@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:bundler": "webpack -w --node-development",
+    "dev:server": "nodemon --exec babel-node src/server/server.js --ignore dist/",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
