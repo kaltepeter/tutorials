@@ -1,7 +1,7 @@
 import React from 'react';
 import './roverselector.css';
 
-function RoverSelector({ roversActive, rovers, roverSelection, onRoverSelection }) {
+function RoverSelector({ rovers, roversActive, roverSelection, onRoverSelection }) {
     const onClick = (roverName) => {
         onRoverSelection({ ...roverSelection, [roverName]: !roverSelection[roverName] });
     };

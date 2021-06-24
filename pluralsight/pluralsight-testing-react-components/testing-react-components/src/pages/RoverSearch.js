@@ -37,7 +37,7 @@ function RoverSearch(props) {
                 ? <p>No results</p> 
                 : photos.map((photo) => 
                     <div key={photo.id} className="col-lg-4 col-12">
-                        <img className="App-img-result" src={photo.img_src} alt="Mars"/>
+                        <img data-testid="rover-image" className="App-img-result" src={photo.img_src} alt="Mars"/>
                     </div>
                     )
                 }
