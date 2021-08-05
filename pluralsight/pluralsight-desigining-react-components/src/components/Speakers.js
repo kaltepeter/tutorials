@@ -1,15 +1,14 @@
 import SpeakersList from './SpeakersList';
-import { useState } from "react";
 import SpeakersToolbar from "./SpeakersToolbar";
+import { SpeakerFilterProvider } from '../contexts/SpeakerFilterContext';
 
-const Speakers = ({theme, setTheme}) => {
-    const [showSessions, setShowSessions] = useState(true);
+const Speakers = () => {
 
     return (
-        <>
-            <SpeakersToolbar theme={theme} setTheme={setTheme} showSessions={showSessions} setShowSessions={setShowSessions} />
-            <SpeakersList showSessions={showSessions} />
-        </>
+        <SpeakerFilterProvider startingShowSessions={false}>
+            <SpeakersToolbar />
+            <SpeakersList />
+        </SpeakerFilterProvider>
     );
 }
 
