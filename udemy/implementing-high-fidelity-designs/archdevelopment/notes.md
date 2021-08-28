@@ -32,3 +32,7 @@ Material UI
 If you need to override styles, first check the API for props that override.
 
 ## Section 4
+
+Grid
+
+- Uses flex box
