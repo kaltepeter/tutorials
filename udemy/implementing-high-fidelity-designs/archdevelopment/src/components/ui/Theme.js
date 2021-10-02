@@ -59,6 +59,11 @@ const theme = createTheme({
       fontSize: "1.25rem",
       fontWeight: 300,
     },
+    body1: {
+      fontSize: "1.25rem",
+      color: arcGrey,
+      fontWeight: 300,
+    },
     learnButton: {
       borderColor: arcBlue,
       color: arcBlue,
@@ -67,6 +72,11 @@ const theme = createTheme({
       borderRadius: 50,
       fontFamily: "Roboto",
       fontWeight: "bold",
+    },
+    caption: {
+      fontSize: "1rem",
+      fontWeight: 300,
+      color: arcGrey,
     },
   },
 });
