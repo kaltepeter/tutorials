@@ -79,6 +79,28 @@ const theme = createTheme({
       color: arcGrey,
     },
   },
+  overrides: {
+    MuiInputLabel: {
+      root: {
+        color: arcBlue,
+        fontSize: "1rem",
+      },
+    },
+    MuiInput: {
+      root: {
+        color: arcGrey,
+        fontWeight: 300,
+      },
+      underline: {
+        "&:before": {
+          borderBottom: `2px solid ${arcBlue}`,
+        },
+        "&:hover:not($disabled):not($focussed):not($error):before": {
+          borderBottom: `2px solid ${arcBlue}`,
+        },
+      },
+    },
+  },
 });
 
 export default theme;
