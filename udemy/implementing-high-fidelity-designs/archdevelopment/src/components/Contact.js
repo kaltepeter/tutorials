@@ -1,10 +1,13 @@
-import react, { useState } from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/button";
 import ButtonArrow from "./ui/ButtonArrow";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Snackbar from "@material-ui/core/Snackbar";
 
 import background from "../assets/background.jpg";
 import mobileBackground from "../assets/mobileBackground.jpg";
@@ -17,6 +20,8 @@ import {
   TextField,
   useMediaQuery,
 } from "@material-ui/core";
+
+const baseUri = process.env.REACT_APP_BASE_URI;
 
 const useStyles = makeStyles((theme) => ({
   background: {
@@ -94,14 +99,20 @@ export default function Contact(props) {
 
   const [open, setOpen] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+
+  const [alert, setAlert] = useState({
+    open: false,
+    message: "",
+    backgroundColor: "",
+  });
+
   const onChange = (event) => {
     let valid;
     switch (event.target.id) {
       case "email":
         setEmail(event.target.value);
-        valid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
-          event.target.value
-        );
+        valid = /^[\w.]+@\w+\.\w{2,}$/.test(event.target.value);
         if (!valid) {
           setEmailHelper("Invalid email");
         } else {
@@ -123,6 +134,48 @@ export default function Contact(props) {
         break;
     }
   };
+
+  const onConfirm = () => {
+    setLoading(true);
+    axios
+      .get(`${baseUri}/sendMail`, {
+        params: {
+          name,
+          email,
+          phone,
+          message,
+        },
+      })
+      .then((res) => {
+        setLoading(false);
+        setOpen(false);
+        setName("");
+        setEmail("");
+        setPhone("");
+        setMessage("");
+        setAlert({
+          open: true,
+          message: "Message sent successfully!",
+          backgroundColor: "#4BB543",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+        setAlert({
+          open: true,
+          message: "Something went worng, please try again!",
+          backgroundColor: "#FF3232",
+        });
+      });
+  };
+
+  const buttonContents = (
+    <>
+      Send Message
+      <img src={airplane} alt="paper airplane" style={{ marginLeft: "1em" }} />
+    </>
+  );
 
   return (
     <Grid container direction="row">
@@ -268,12 +321,7 @@ export default function Contact(props) {
                 className={classes.sendButton}
                 onClick={() => setOpen(true)}
               >
-                Send Message{" "}
-                <img
-                  src={airplane}
-                  alt="paper airplane"
-                  style={{ marginLeft: "1em" }}
-                />
+                {loading ? <CircularProgress size={30} /> : buttonContents}
               </Button>
             </Grid>
           </Grid>
@@ -382,19 +430,22 @@ export default function Contact(props) {
                 }
                 variant="contained"
                 className={classes.sendButton}
-                onClick={() => setOpen(true)}
+                onClick={onConfirm}
               >
-                Send Message
-                <img
-                  src={airplane}
-                  alt="paper airplane"
-                  style={{ marginLeft: "1em" }}
-                />
+                {loading ? <CircularProgress size={30} /> : buttonContents}
               </Button>
             </Grid>
           </Grid>
         </DialogContent>
       </Dialog>
+      <Snackbar
+        open={alert.open}
+        message={alert.message}
+        ContentProps={{ style: { backgroundColor: alert.backgroundColor } }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        onClose={() => setAlert({ ...alert, open: false })}
+        autoHideDuration={4000}
+      />
       <Grid
         item
         container
