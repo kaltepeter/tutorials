@@ -73,3 +73,6 @@
 [submodule "pluralsight/Async-Patterns-in-Node.js"]
 	path = pluralsight/Async-Patterns-in-Node.js
 	url = git@github.com:kaltepeter/Async-Patterns-in-Node.js.git
+[submodule "frontendmasters/rxjs-fundamentals"]
+	path = frontendmasters/rxjs-fundamentals
+	url = git@github.com:kaltepeter/rxjs-fundamentals.git
