@@ -1,5 +1,9 @@
+from os import path
+
+basepath = path.dirname(__file__)
+
 WORD_LIST = "sowpods.txt"
-wordlist = open(WORD_LIST).readlines()
+wordlist = open(path.join(basepath, WORD_LIST)).readlines()
 # Get rid of newlines
 wordlist = [word.lower().strip() for word in wordlist]
 
