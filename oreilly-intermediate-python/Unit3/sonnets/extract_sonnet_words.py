@@ -1,8 +1,14 @@
+from os import path
 import string
+from pathlib import Path
+
+# base_path = Path(__file__).parent
+# sonnets_file = path.join(base_path, "sonnets.txt")
 
 sonnets = open("sonnets.txt").readlines()
-word_set = set([elt.strip() for elt in open("sowpods.txt")])
+word_set = set([elt.strip() for elt in open("sonnets.txt")])
 sonnet_words = set()
+
 
 def strip_punctuation(word):
     # Remove surrounding punctuation. If there's an apostrophe in the
@@ -12,6 +18,7 @@ def strip_punctuation(word):
     if apostrophe_index != -1:
         return None
     return word.strip(string.punctuation)
+
 
 for line in sonnets:
     # Split apart hyphenated words.

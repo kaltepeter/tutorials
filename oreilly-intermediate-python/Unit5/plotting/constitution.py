@@ -1,7 +1,11 @@
 from matplotlib import pyplot
 import string
+from pathlib import Path
+from os import path
 
-data = open("mystery.txt", "r").read()
+base_path = Path(__file__).parent
+
+data = open(path.join(base_path, "mystery.txt"), "r").read()
 
 # Create a dictionary with an entry for each letter in the
 # alphabet. The keys are letters and the values will be the counts of
@@ -37,7 +41,7 @@ xlocations = range(len(frequencies))
 width = 0.5
 # Calculate where along the x-axis the ticks for each bar should
 # go. We want ticks to be in the center of bars.
-pyplot.xticks([elt + width/2 for elt in xlocations], labels)
+pyplot.xticks([elt + width / 2 for elt in xlocations], labels)
 # Draw the bars. `counts` is a list of the heights (frequencies) for
 # each bar (letter).
 pyplot.bar(xlocations, counts, width=width)

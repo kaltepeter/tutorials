@@ -1,6 +1,10 @@
 from matplotlib import pyplot
+from pathlib import Path
+from os import path
 
-data = open("world_population.txt", "r").readlines()
+base_path = Path(__file__).parent
+
+data = open(path.join(base_path, "world_population.txt"), "r").readlines()
 dates = []
 populations = []
 for point in data:

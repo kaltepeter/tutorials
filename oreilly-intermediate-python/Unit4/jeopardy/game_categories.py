@@ -9,8 +9,12 @@
 #    WHERE game=%d ORDER BY round""" % (game_id,)
 
 import sqlite3
+from pathlib import Path
+from os import path
 
-connection = sqlite3.connect('jeopardy.db')
+base_path = Path(__file__).parent
+
+connection = sqlite3.connect(path.join(base_path, "jeopardy.db"))
 cursor = connection.cursor()
 
 # Get a random game.
@@ -21,10 +25,14 @@ print("Categories for game #%d:" % (game_id,))
 
 # Get the categories for that game.
 query = """SELECT name, round FROM category
-WHERE game=%d ORDER BY round""" % (game_id,)
+WHERE game=%d ORDER BY round""" % (
+    game_id,
+)
 cursor.execute(query)
 results = cursor.fetchall()
 
-# TODO: process results.
+for result in results:
+    name, round = result
+    print(f"Round: {round}: {name}")
 
 connection.close()

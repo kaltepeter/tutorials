@@ -1,6 +1,10 @@
 import sqlite3
+from pathlib import Path
+from os import path
 
-connection = sqlite3.connect("jeopardy.db")
+base_path = Path(__file__).parent
+
+connection = sqlite3.connect(path.join(base_path, "jeopardy.db"))
 cursor = connection.cursor()
 
 cursor.execute("SELECT id, name FROM category ORDER BY RANDOM() LIMIT 1")
@@ -10,7 +14,9 @@ print(name)
 
 
 query = """SELECT text, answer, value FROM clue
-WHERE category=%s ORDER BY value""" % (category_id,)
+WHERE category=%s ORDER BY value""" % (
+    category_id,
+)
 cursor.execute(query)
 results = cursor.fetchall()
 
